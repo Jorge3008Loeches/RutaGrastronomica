@@ -1,11 +1,11 @@
 <div class="container">
   <div class="elemento">
-    <img class="img" src="/assets/img2.jpg" alt="" />
+    <img class="img" [src]="plato?.imagen" alt="" />
     <div class="contenido">
-      <p>nombre del platillo</p>
-      <p>ubicacion</p>
+      <h3>{{ plato?.nombre }}</h3>
+      <span class="description">{{ plato?.ubicacion }}</span>
 
-      <button>nombre del restaurant</button>
+      <button class="btn-outlined-gris">{{ plato?.restaurante }}</button>
     </div>
   </div>
 </div>

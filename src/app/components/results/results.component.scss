@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  height: 90%;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+.filters {
+  width: 100%;
+}
+.food {
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+.filters {
+  width: 280px;
+  font-family: sans-serif;
+  font-size: 14px;
+  padding: 1rem;
+  border-right: 1px solid #e0e0e0;
+}
+
+.filter-section {
+  margin-bottom: 1.5rem;
+}
+
+.filter-section h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.price-options {
+  display: flex;
+  gap: 4px;
+}
+
+.price-options button {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.price-options button:hover {
+  background-color: #f0f0f0;
+}
+
+label {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.category-tags span {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.category-tags span:hover {
+  background-color: #f7f7f7;
+}
+
+a {
+  color: #0077cc;
+  font-size: 13px;
+  text-decoration: none;
+}
