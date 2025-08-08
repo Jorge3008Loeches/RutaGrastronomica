@@ -1,11 +1,12 @@
 <div class="main-container">
-  <p class="titleSliderPlato">Elige tu plato favorito</p>
+  <!-- slider tipos de comida -->
+  <p class="titleSliderPlato">Lo mejor para ti</p>
 
   <div class="slider-wrapper">
     <button class="slider-btn-left" (click)="scrollSlider('left')">←</button>
 
-    <div class="slider-viewport" #sliderViewport>
-      <div class="slider" #slider>
+    <div class="slider-viewport" #sliderViewportPlatos>
+      <div class="slider" #sliderPlatos>
         <div class="slider-item" *ngFor="let plato of platos">
           <img class="imgFood" [src]="plato.img" [alt]="plato.nombre" />
           <p class="nombreFood">{{ plato.nombre }}</p>
@@ -16,14 +17,38 @@
     <button class="slider-btn-right" (click)="scrollSlider('right')">→</button>
   </div>
 
+  <!-- slider tipos de comida -->
+  <p class="titleSliderPlato">Elige tu tipo de cocina favorito</p>
+
+  <div class="slider-wrapper">
+    <button class="slider-btn-left" (click)="scrollSliderCoci('left')">
+      ←
+    </button>
+
+    <div class="slider-viewport" #sliderViewportCoci>
+      <div class="slider" #sliderCoci>
+        <div class="slider-item" *ngFor="let cocina of cocinas">
+          <img class="imgFood" [src]="cocina.img" [alt]="cocina.nombre" />
+          <p class="nombreFood">{{ cocina.nombre }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-btn-right" (click)="scrollSliderCoci('right')">
+      →
+    </button>
+  </div>
+
+  <!-- slider restaurantes -->
+
   <p class="propTitle">Restaurantes dignos de atención</p>
 
   <div class="slider-wrapper">
-    <button class="slider-btn-left" (click)="scrollSlider('left')">←</button>
+    <button class="slider-btn-left" (click)="scrollSliderRes('left')">←</button>
 
-    <div class="slider-viewport" #sliderViewport>
-      <div class="slider" #slider>
-        <div class="slider-item" *ngFor="let restaurante of restaurantes">
+    <div class="slider-viewportRes" #sliderViewportRes>
+      <div class="slider" #sliderRes>
+        <div class="slider-itemRes" *ngFor="let restaurante of restaurantes">
           <img
             class="imgRestaurante"
             [src]="restaurante.img"
@@ -35,8 +60,12 @@
       </div>
     </div>
 
-    <button class="slider-btn-right" (click)="scrollSlider('right')">→</button>
+    <button class="slider-btn-right" (click)="scrollSliderRes('right')">
+      →
+    </button>
   </div>
+
+  <!-- area de propietario -->
 
   <p class="propTitle">¿Eres propietario de un restaurante?</p>
 
