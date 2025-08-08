@@ -5,13 +5,15 @@
     </div>
   </div>
   <div class="container">
-    <h1 class="logo">LOGO</h1>
+    <a href="">
+      <img class="logo" src="/assets/logo.png" alt="" />
+    </a>
     <div class="busqueda">
       <input
         class="searchinput"
         type="text"
         placeholder="Busca tu plato favorito" />
-      <button mat-icon-button class="searchbutton">
+      <button mat-icon-button class="searchbutton" (click)="goToSearch()">
         <mat-icon>search</mat-icon>
       </button>
     </div>

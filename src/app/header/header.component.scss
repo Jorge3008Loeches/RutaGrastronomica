@@ -2,6 +2,17 @@
 
 header {
   width: 100%;
+  height: 175px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 20px;
+  margin-left: 50px;
+  margin-top: -50px;
+  cursor: pointer;
 }
 
 .top-bar {
@@ -45,10 +56,7 @@ header {
   gap: 5px;
   margin-left: auto;
   flex: 1;
-}
-
-.logo {
-  flex: 1;
+  margin-bottom: 50px;
 }
 
 .busqueda {
@@ -59,7 +67,6 @@ header {
 
 .platosbutton {
   font-family: 'Nunito';
-
   border-radius: 8px;
   margin-left: 15px;
   text-decoration: none;
@@ -98,6 +105,7 @@ header {
   border-right: none;
   border-radius: 4px 0 0 4px;
   outline: none;
+  margin-bottom: 50px;
 }
 
 .searchinput:hover {
