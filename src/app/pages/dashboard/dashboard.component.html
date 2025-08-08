@@ -1,1 +1,52 @@
-<div class="main-container"></div>
+<div class="main-container">
+  <p class="titleSliderPlato">Elige tu plato favorito</p>
+
+  <div class="slider-wrapper">
+    <button class="slider-btn-left" (click)="scrollSlider('left')">←</button>
+
+    <div class="slider-viewport" #sliderViewport>
+      <div class="slider" #slider>
+        <div class="slider-item" *ngFor="let plato of platos">
+          <img class="imgFood" [src]="plato.img" [alt]="plato.nombre" />
+          <p class="nombreFood">{{ plato.nombre }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-btn-right" (click)="scrollSlider('right')">→</button>
+  </div>
+
+  <p class="propTitle">Restaurantes dignos de atención</p>
+
+  <div class="slider-wrapper">
+    <button class="slider-btn-left" (click)="scrollSlider('left')">←</button>
+
+    <div class="slider-viewport" #sliderViewport>
+      <div class="slider" #slider>
+        <div class="slider-item" *ngFor="let restaurante of restaurantes">
+          <img
+            class="imgRestaurante"
+            [src]="restaurante.img"
+            [alt]="restaurante.nombre" />
+          <p class="tipoRestaurante">{{ restaurante.tipo }}</p>
+          <p class="nombreRestaurante">{{ restaurante.nombre }}</p>
+          <p class="ubicacionRestaurante">{{ restaurante.ubicacion }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-btn-right" (click)="scrollSlider('right')">→</button>
+  </div>
+
+  <p class="propTitle">¿Eres propietario de un restaurante?</p>
+
+  <div class="propietarioContainer">
+    <img class="propimg" src="/assets/cocinero3.jpg" alt="" />
+    <div class="propTexto">
+      <p class="textgene">¿Listo para atraer más clientes a tu restaurante?</p>
+      <a class="registroLink" href="">Registra tu restaurante!</a>
+      <p class="textgene">ya soy cliente!</p>
+      <button class="inicioLink" href="">Inicia Secion</button>
+    </div>
+  </div>
+</div>
