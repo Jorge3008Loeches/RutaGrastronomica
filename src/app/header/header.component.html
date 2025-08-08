@@ -1,19 +1,28 @@
-<div class="container">
-  <div class="registroRestaurante">
-    <button>Registrar mi restaurante</button>
+<header>
+  <div class="top-bar">
+    <div class="registroRestaurante">
+      <a class="registroButton">Registrar mi restaurante</a>
+    </div>
   </div>
-  <h1 class="logo">LOGO</h1>
-  <div class="busqueda">
-    <input type="text" placeholder="Tipo de cocina, busca tu plato favorito" />
-    <button>Buscar</button>
-  </div>
+  <div class="container">
+    <h1 class="logo">LOGO</h1>
+    <div class="busqueda">
+      <input
+        class="searchinput"
+        type="text"
+        placeholder="Busca tu plato favorito" />
+      <button mat-icon-button class="searchbutton">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
 
-  <div class="acciones">
-    <nav class="navigation">
-      <a href="">Platos</a>
-      <a href="">Restaurantes</a>
-    </nav>
-    <button>Log In</button>
-    <button>Sign Up</button>
+    <div class="acciones">
+      <nav class="navigation">
+        <a class="platosbutton" href="">Platos</a>
+        <a class="Restaurantesbutton" href="">Restaurantes</a>
+      </nav>
+      <button class="loginbutton">Log In</button>
+      <button class="signupbutton">Sign Up</button>
+    </div>
   </div>
-</div>
+</header>

@@ -1,16 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+header {
+  width: 100%;
+}
+
+.top-bar {
+  background-color: #f9fafa;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.registroRestaurante {
+  text-align: right;
+}
+
+.registroButton {
+  font-family: 'Nunito';
+  font-weight: 600;
+  border-radius: 8px;
+  margin-right: 50px;
+  font-size: 15px;
+  color: black;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.registroButton:hover {
+  text-decoration: underline;
+  transition: 0.5s ease;
+}
+
 .container {
-  background-color: orange;
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  padding-top: 60px;
 }
 
 .acciones {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   margin-left: auto;
   flex: 1;
 }
@@ -25,19 +57,110 @@
   flex: 2;
 }
 
-.navigation {
-  background-color: green;
-  padding: 5px;
-}
+.platosbutton {
+  font-family: 'Nunito';
 
-.navigation a {
+  border-radius: 8px;
   margin-left: 15px;
   text-decoration: none;
   font-size: 23px;
   color: black;
+  padding: 10px;
 }
-.registroRestaurante {
-  position: fixed;
-  top: 10px;
-  right: 10px;
+
+.Restaurantesbutton {
+  font-family: 'Nunito';
+  border-radius: 8px;
+  margin-left: 15px;
+  text-decoration: none;
+  font-size: 23px;
+  color: black;
+  padding: 10px;
+}
+
+.Restaurantesbutton:hover {
+  background-color: #f9fafa;
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.platosbutton:hover {
+  background-color: #f9fafa;
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.searchinput {
+  font-family: 'Nunito';
+  padding: 8px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.searchinput:hover {
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.searchinput:focus {
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.searchbutton {
+  padding: 15 0px;
+  font-size: 18px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  border-radius: 0 4px 4px 0;
+  background-color: rgb(255, 70, 70);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+}
+
+.searchbutton:hover {
+  background-color: rgb(255, 86, 86);
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.loginbutton {
+  font-family: 'Nunito';
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: white;
+  padding: 15px;
+  color: #333;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.loginbutton:hover {
+  background-color: #f7f7f7;
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.signupbutton {
+  font-family: 'Nunito';
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: rgb(255, 70, 70);
+  padding: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+}
+
+.signupbutton:hover {
+  background-color: rgb(255, 86, 86);
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
 }
