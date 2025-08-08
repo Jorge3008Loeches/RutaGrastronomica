@@ -12,11 +12,11 @@ export class GoogleMapComponent {
   zoom = 4;
   display!: google.maps.LatLngLiteral;
 
-  // moveMap(event: google.maps.MapMouseEvent) {
-  //   this.center = event.latLng!.toJSON();
-  // }
+  moveMap(event: google.maps.MapMouseEvent) {
+    this.center = event.latLng!.toJSON();
+  }
 
-  // move(event: google.maps.MapMouseEvent) {
-  //   this.display = event.latLng!.toJSON();
-  // }
+  move(event: google.maps.MapMouseEvent) {
+    this.display = event.latLng!.toJSON();
+  }
 }
