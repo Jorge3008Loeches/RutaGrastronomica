@@ -1,7 +1,9 @@
 <header>
   <div class="top-bar">
     <div class="registroRestaurante">
-      <a class="registroButton">Registrar mi restaurante</a>
+      <a (click)="openRegisterRestaurantDialog()" class="registroButton"
+        >Registrar mi restaurante</a
+      >
     </div>
   </div>
   <div class="container">
@@ -24,7 +26,9 @@
         <a class="Restaurantesbutton" href="">Restaurantes</a>
       </nav>
       <button (click)="openLoginDialog()" class="loginbutton">Log In</button>
-      <button class="signupbutton">Sign Up</button>
+      <button (click)="openRegisterDialog()" class="signupbutton">
+        Sign Up
+      </button>
     </div>
   </div>
 </header>
