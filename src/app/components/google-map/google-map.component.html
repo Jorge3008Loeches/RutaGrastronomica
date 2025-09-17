@@ -1,7 +1,25 @@
 <google-map
   height="100%"
   width="100%"
+  [options]="mapOptions"
   [center]="center"
   [zoom]="zoom"
   (mapClick)="moveMap($event)"
-  (mapMousemove)="move($event)" />
+  (mapMousemove)="move($event)">
+  <!-- <map-marker
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label">
+  </map-marker> -->
+
+  @for (mark of markers; track mark.id) {
+      <map-advanced-marker [position]="{
+        lat: mark.position.lat,
+        lng: mark.position.lng
+      }" [options]="advancedMarkerOptions" />
+    }
+
+  <!-- <map-info-window *ngFor="let marker of markers" #infoWindow>
+    {{ marker?.info }}
+  </map-info-window> -->
+</google-map>
