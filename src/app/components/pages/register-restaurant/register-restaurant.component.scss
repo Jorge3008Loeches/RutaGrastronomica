@@ -57,27 +57,16 @@
     all: unset; /* Reinicia casi todo */
     display: flex; /* Necesario para mantener estructura */
     align-items: center;
-    padding: 0;
-    margin: 0;
     background: none;
-    border-radius: 0;
-    box-shadow: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
   }
 
   .mat-step-label {
-    all: unset;
-    font-size: initial;
-    color: initial;
-  }
-
-  .mat-step-icon {
-    all: unset;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: none;
-    color: inherit;
-    font-weight: normal;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 15px 5px 5px;
   }
 
   .mat-step-icon-selected {

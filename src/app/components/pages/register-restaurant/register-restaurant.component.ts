@@ -46,15 +46,13 @@ export class RegisterRestaurantComponent {
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     telefono: ['', Validators.required],
-    password: ['', Validators.required],
-    password2: ['', Validators.required],
   });
 
   secondFormGroup = this._formBuilder.group({
     descripcion: ['', Validators.required],
     direccion: ['', Validators.required],
-    ubicacion: ['', Validators.required],
-    imagen: ['', Validators.required],
+    password: ['', Validators.required],
+    password2: ['', Validators.required],
   });
 
   onLogin() {

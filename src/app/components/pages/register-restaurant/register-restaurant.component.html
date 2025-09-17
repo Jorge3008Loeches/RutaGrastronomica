@@ -31,22 +31,8 @@
           formControlName="telefono" 
           required />
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>password</mat-label>
-        <input
-          matInput
-          type="string"
-          formControlName="password"
-          required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>repite la password</mat-label>
-        <input
-          matInput
-          type="string"
-          formControlName="password2"
-          required />
-      </mat-form-field>
+      
+      
       <div mat-dialog-actions>
         <button class="cancelbutton" mat-dialog-close>cancelar</button>
         <button
@@ -78,22 +64,26 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <mat-label>ubicacion</mat-label>
-          <input
-            matInput
-            type="string"
-            formControlName="ubicacion"
-            required />
-        </mat-form-field>
+        <mat-label>password</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="password"
+          required />
+      </mat-form-field>
 
-        <mat-form-field class="full-width">
-          <mat-label>imagen</mat-label>
-          <input
-            matInput
-            type="string"
-            formControlName="imagen"
-            required />
-        </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>repite la password</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="password2"
+          required />
+      </mat-form-field>
+
+        
+
+       
         <div mat-dialog-actions>
           <button class="cancelbutton" matStepperPrevious>Regresar</button>
           <button class="loginbutton" (click)="onLogin()">siguiente</button>
