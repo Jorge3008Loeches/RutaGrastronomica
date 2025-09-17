@@ -1,11 +1,39 @@
 <div class="container">
   <div class="elemento">
-    <img class="img" [src]="plato?.imagen" alt="" />
     <div class="contenido">
-      <h3>{{ plato?.nombre }}</h3>
-      <span class="description">{{ plato?.ubicacion }}</span>
+      <div class="image-container">
+      <img class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
+        <div>
+          <h3>{{ plato?.nombre }}</h3>
+          <button class="btn-outlined-gris">{{ plato?.categoria }}</button>
+          <span class="description">{{ plato?.descripcion }}</span>
 
-      <button class="btn-outlined-gris">{{ plato?.restaurante }}</button>
+        </div>
+
+      </div>
+      <div class="container-plate-data">
+
+
+        <div class="plate-data">
+          <div>
+            <h4>Ingredientes</h4>
+            <ul>
+              <li *ngFor="let ingrediente of parseIngredientes(plato?.ingredientes)">
+                {{ ingrediente }}
+              </li>
+            </ul>
+
+          </div>
+          <div>
+            <h4>Receta</h4>
+            <span>
+              {{plato?.receta}}
+            </span>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
