@@ -1,0 +1,104 @@
+<p class="title">Registrate tu restaurante!</p>
+
+<form [formGroup]="firstFormGroup" mat-dialog-content>
+  <mat-stepper class="custom-stepper"   [linear]="true" >
+
+    <mat-step class="matStep" [stepControl]="firstFormGroup"  label="Step 1">
+
+      <mat-form-field class="full-width">
+
+        <mat-label>Nombre del restaurante</mat-label>
+
+        <input matInput type="string" 
+        formControlName="name"
+        required />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+
+        <mat-label>Email</mat-label>
+
+        <input matInput
+         type="email"
+         formControlName="email" 
+         required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Telefono</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="telefono" 
+          required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>password</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="password"
+          required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>repite la password</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="password2"
+          required />
+      </mat-form-field>
+      <div mat-dialog-actions>
+        <button class="cancelbutton" mat-dialog-close>cancelar</button>
+        <button
+          class="loginbutton"
+          matStepperNext
+          [disabled]="firstFormGroup.invalid">
+          siguiente
+        </button>
+      </div>
+    </mat-step>
+    <mat-step  [stepControl]="secondFormGroup" class="matStep" label="Step 2">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field class="full-width">
+          <mat-label>descripcion</mat-label>
+          <input
+            matInput
+            type="string"
+            formControlName="descripcion"
+            required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>direccion</mat-label>
+          <input
+            matInput
+            type="string"
+            formControlName="direccion"
+            required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>ubicacion</mat-label>
+          <input
+            matInput
+            type="string"
+            formControlName="ubicacion"
+            required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>imagen</mat-label>
+          <input
+            matInput
+            type="string"
+            formControlName="imagen"
+            required />
+        </mat-form-field>
+        <div mat-dialog-actions>
+          <button class="cancelbutton" matStepperPrevious>Regresar</button>
+          <button class="loginbutton" (click)="onLogin()">siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</form>

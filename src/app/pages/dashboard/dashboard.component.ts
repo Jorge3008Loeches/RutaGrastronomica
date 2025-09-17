@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { LoginComponent } from '../../components/pages/login/login.component';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterRestaurantComponent } from '../../components/pages/register-restaurant/register-restaurant.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +19,11 @@ export class DashboardComponent {
   sliderViewportRes!: ElementRef;
   @ViewChild('sliderViewportCoci', { static: false })
   sliderViewportCoci!: ElementRef;
+
+  constructor(
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   platos = [
     {
@@ -236,6 +245,19 @@ export class DashboardComponent {
     container.scrollTo({
       left: this.currentIndexRes * scrollAmount,
       behavior: 'smooth',
+    });
+  }
+
+  openRegisterRestaurantDialog() {
+    // Aquí puedes abrir un diálogo o redirigir a una página de registro de restaurante
+    this.dialog.open(RegisterRestaurantComponent, {
+      width: '400px',
+    });
+  }
+
+  openLoginDialog() {
+    this.dialog.open(LoginComponent, {
+      width: '400px',
     });
   }
 }

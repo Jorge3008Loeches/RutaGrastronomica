@@ -73,9 +73,13 @@
     <img class="propimg" src="/assets/cocinero3.jpg" alt="" />
     <div class="propTexto">
       <p class="textgene">¿Listo para atraer más clientes a tu restaurante?</p>
-      <a class="registroLink" href="">Registra tu restaurante!</a>
+      <a class="registroLink" (click)="openRegisterRestaurantDialog()"
+        >Registra tu restaurante!</a
+      >
       <p class="textgene">ya soy cliente!</p>
-      <button class="inicioLink" href="">Inicia Secion</button>
+      <button (click)="openLoginDialog()" class="inicioLink">
+        Inicia Secion
+      </button>
     </div>
   </div>
 </div>

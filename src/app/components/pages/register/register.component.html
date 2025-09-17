@@ -1,0 +1,48 @@
+<p class="title">Registrate!</p>
+
+<form (ngSubmit)="onLogin()" #loginForm="ngForm" mat-dialog-content>
+  <mat-form-field class="full-width">
+    <mat-label>Nombre de usuario</mat-label>
+    <input
+      matInput
+      type="string"
+      name="username"
+      [(ngModel)]="username"
+      required />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" name="email" [(ngModel)]="email" required />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Telefono</mat-label>
+    <input
+      matInput
+      type="string"
+      name="telefono"
+      [(ngModel)]="telefono"
+      required />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Contraseña</mat-label>
+    <input
+      matInput
+      type="password"
+      name="password1"
+      [(ngModel)]="password"
+      required />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Repite la Contraseña</mat-label>
+    <input
+      matInput
+      type="password"
+      name="password2"
+      [(ngModel)]="password2"
+      required />
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button class="cancelbutton" mat-dialog-close>cancelar</button>
+    <button class="loginbutton" type="submit">Registrarme</button>
+  </div>
+</form>

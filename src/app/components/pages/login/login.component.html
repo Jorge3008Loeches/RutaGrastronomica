@@ -1,0 +1,21 @@
+<p class="title">Iniciar secion</p>
+
+<form (ngSubmit)="onLogin()" #loginForm="ngForm" mat-dialog-content>
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" name="email" [(ngModel)]="email" required />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Contraseña</mat-label>
+    <input
+      matInput
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      required />
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button class="cancelbutton" mat-dialog-close>cancelar</button>
+    <button class="loginbutton" type="submit">Iniciar Sesion</button>
+  </div>
+</form>
