@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/prefer-inject */
 import { Injectable } from '@angular/core';
-import { PlatosRetrieved } from '../models/platos';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { RetrievedRestaurant } from '../models/restaurante';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +12,9 @@ export class ResultsService {
 
   constructor(private http: HttpClient) {}
 
-  backendUrl = 'http://localhost:8080/api/platosTipicos';
+  backendUrl = 'http://localhost:8080/api/restaurantes';
 
-  getPlatos(): Observable<PlatosRetrieved[]> {
-    return this.http.get<PlatosRetrieved[]>(this.backendUrl);
+  getRestaurantes(): Observable<RetrievedRestaurant[]> {
+    return this.http.get<RetrievedRestaurant[]>(this.backendUrl);
   }
 }

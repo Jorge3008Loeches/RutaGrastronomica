@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PlatosRetrieved } from '../../models/platos';
 import { CommonModule } from '@angular/common';
+import { RetrievedRestaurant } from '../../models/restaurante';
 
 @Component({
   selector: 'app-platos-side-bar',
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class PlatosSideBarComponent {
   @Input() plato?: PlatosRetrieved; // o crea una interfaz mejor tipada
+  @Input() restaurante?: RetrievedRestaurant; // o crea una interfaz mejor tipada
+
   parseIngredientes(ingredientes?: string): string[] {
     return ingredientes ? ingredientes.split(/[;,]/).map(i => i.trim()) : [];
   }

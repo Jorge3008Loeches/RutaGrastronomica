@@ -12,11 +12,13 @@
     [label]="marker.label">
   </map-marker> -->
 
-  @for (mark of markers; track mark.id) {
+  @for (mark of restaurantesRetrieved; track mark.id_restaurante) {
       <map-advanced-marker [position]="{
-        lat: mark.position.lat,
-        lng: mark.position.lng
-      }" [options]="advancedMarkerOptions" />
+        lat: mark.latitude,
+        lng: mark.longitude
+      }" [options]="advancedMarkerOptions"
+       (mapClick)="changeLocation(mark)"
+       />
     }
 
   <!-- <map-info-window *ngFor="let marker of markers" #infoWindow>
