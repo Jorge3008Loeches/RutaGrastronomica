@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="elemento">
+  <div class="elemento" [class.elemento_seleccionado]="restaurante?.id_restaurante === ResultsService.selectedResult()?.id_restaurante">
     <div class="contenido">
       <div class="image-container">
       <img class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
         <div>
           <h3>{{ restaurante?.nombre }}</h3>
-          <button class="btn-outlined-gris">{{ restaurante?.domicilio }}</button>
+          <button class="btn-outlined-gris" (click)=" restaurante && go(restaurante)">{{ restaurante?.domicilio }}</button>
           <span class="description">{{ restaurante?.rating }}</span>
 
         </div>
