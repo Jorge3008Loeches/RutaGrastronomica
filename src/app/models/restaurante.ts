@@ -17,3 +17,15 @@ export interface Restaurante {
   calificacionPromedio?: number;
   password: string;
 }
+
+export interface RetrievedRestaurant {
+  id_restaurante: number;
+  reference: string;
+  nombre: string;
+  domicilio: string;
+  pricelevel: number | null;
+  rating: number;
+  latitude: number;
+  longitude: number;
+  photoreference: string;
+}

@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="elemento">
+  <div class="elemento" [class.elemento_seleccionado]="restaurante?.id_restaurante === ResultsService.selectedResult()?.id_restaurante">
     <div class="contenido">
       <div class="image-container">
       <img class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
         <div>
-          <h3>{{ plato?.nombre }}</h3>
-          <button class="btn-outlined-gris">{{ plato?.categoria }}</button>
-          <span class="description">{{ plato?.descripcion }}</span>
+          <h3>{{ restaurante?.nombre }}</h3>
+          <button class="btn-outlined-gris" (click)=" restaurante && go(restaurante)">{{ restaurante?.domicilio }}</button>
+          <span class="description">{{ restaurante?.rating }}</span>
 
         </div>
 
       </div>
-      <div class="container-plate-data">
+      <!-- <div class="container-plate-data">
 
 
         <div class="plate-data">
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

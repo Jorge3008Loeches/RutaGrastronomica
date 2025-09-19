@@ -21,6 +21,10 @@ button {
   margin-bottom: 10px;
 }
 
+.elemento_seleccionado {
+  border: 3px solid red;
+}
+
 .container {
   display: flex;
 }

@@ -1,8 +1,15 @@
 /* eslint-disable @angular-eslint/prefer-inject */
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  effect,
+  ElementRef,
+  Input,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { PlatosSideBarComponent } from '../platos-side-bar/platos-side-bar.component';
 import { CommonModule } from '@angular/common';
-import { PlatosRetrieved } from '../../models/platos';
+import { RetrievedRestaurant } from '../../models/restaurante';
 import { ResultsService } from '../../services/results.service';
 
 @Component({
@@ -11,22 +18,33 @@ import { ResultsService } from '../../services/results.service';
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
 })
-export class ResultsComponent implements OnInit {
-  array = Array(10);
+export class ResultsComponent {
+  @Input() restaurantesRetrieved: RetrievedRestaurant[] = [];
+  @ViewChildren('restaurantItem') items!: QueryList<ElementRef<HTMLDivElement>>;
 
-  platosRetrieved: PlatosRetrieved[] = [];
-
-  constructor(private ResultsService: ResultsService) {}
-
-  ngOnInit(): void {
-    this.loadPlatos();
+  constructor(public ResultsService: ResultsService) {
+    // Efecto reactivo: cada vez que cambia el selectedResult en el servicio
+    effect(() => {
+      const selected = this.ResultsService.selectedResult();
+      if (selected) {
+        this.scrollToSelected(selected);
+      }
+    });
   }
 
-  loadPlatos(): void {
-    this.ResultsService.getPlatos().subscribe({
-      next: platos => {
-        this.platosRetrieved = platos;
-      },
-    });
+  go(restaurant: RetrievedRestaurant) {
+    this.ResultsService.goToRestaurant(restaurant);
+  }
+
+  private scrollToSelected(rest: RetrievedRestaurant) {
+    const item = this.items.find(
+      el => el.nativeElement.dataset['id'] === String(rest.id_restaurante)
+    );
+    if (item) {
+      item.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
   }
 }
