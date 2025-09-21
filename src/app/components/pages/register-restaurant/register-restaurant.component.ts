@@ -11,6 +11,8 @@ import {
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
+import { Usuario } from '../../../models/usuario';
+import { UserServiceService } from '../../../services/user-service.service';
 
 @Component({
   selector: 'app-register-restaurant',
@@ -30,35 +32,70 @@ import { MatStepperModule } from '@angular/material/stepper';
 export class RegisterRestaurantComponent {
   private _formBuilder = inject(FormBuilder);
 
-  email: string = '';
-  direccion: string = '';
-  telefono: string = '';
-  password: string = '';
-  password2: string = '';
-  name: string = '';
-  descripcion: string = '';
-  ubicacion: string = '';
-  imagen: string = '';
+  nuevoUsuario: Usuario = {
+    nombre: '',
+    descripcion: '',
+    domicilio: '',
+    email: '',
+    latitude: 0,
+    longitude: 0,
+    rating: 0,
+    photoreference: '',
+    password: '',
+  };
 
-  constructor(private dialogRef: MatDialogRef<RegisterRestaurantComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<RegisterRestaurantComponent>,
+    private usuarioService: UserServiceService
+  ) {}
 
   firstFormGroup = this._formBuilder.group({
-    name: ['', Validators.required],
+    nombre: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    telefono: ['', Validators.required],
+    photoreference: [''],
   });
 
   secondFormGroup = this._formBuilder.group({
     descripcion: ['', Validators.required],
-    direccion: ['', Validators.required],
+    domicilio: ['', Validators.required],
     password: ['', Validators.required],
     password2: ['', Validators.required],
+    latitude: [0, Validators.required],
+    longitude: [0, Validators.required],
   });
 
   onLogin() {
-    console.log('email', this.email);
-    console.log('name', this.name);
-    this.dialogRef.close();
+    const form1 = this.firstFormGroup.value;
+    const form2 = this.secondFormGroup.value;
+
+    if (!form1 || !form2) return;
+
+    const usuario: Usuario = {
+      nombre: form1.nombre!,
+      email: form1.email!,
+      photoreference: form1.photoreference || '',
+      domicilio: form2.domicilio!,
+      descripcion: form2.descripcion || '',
+      latitude: form2.latitude ?? 0,
+      longitude: form2.longitude ?? 0,
+      rating: 0, // puedes dejarlo fijo por ahora
+      password: form2.password!,
+    };
+
+    if (form2.password !== form2.password2) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
+    this.usuarioService.create(usuario).subscribe({
+      next: res => {
+        console.log('usuario registrado', res);
+        this.dialogRef.close();
+      },
+      error: err => {
+        console.error('error al registrar', err);
+      },
+    });
   }
   isLinear = false;
 }
