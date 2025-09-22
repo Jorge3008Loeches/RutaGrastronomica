@@ -21,6 +21,10 @@ button {
   margin-bottom: 10px;
 }
 
+.elemento_seleccionado {
+  border: 3px solid red;
+}
+
 .container {
   display: flex;
 }
@@ -49,4 +53,28 @@ button {
 
 .btn-outlined-gris:hover {
   background-color: #f2f2f2; /* gris claro al pasar el mouse */
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container-plate-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.plate-data {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  padding: 15px;
 }

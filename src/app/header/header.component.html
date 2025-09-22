@@ -14,7 +14,7 @@
       <input
         class="searchinput"
         type="text"
-        placeholder="Busca tu plato favorito" />
+        />
       <button mat-icon-button class="searchbutton" (click)="goToSearch()">
         <mat-icon>search</mat-icon>
       </button>
@@ -22,13 +22,32 @@
 
     <div class="acciones">
       <nav class="navigation">
-        <a class="platosbutton" href="">Platos</a>
-        <a class="Restaurantesbutton" href="">Restaurantes</a>
+
+        <a class="platosbutton" (click)="goPlatos()">Platos</a>
+
+        <a class="Restaurantesbutton" (click)="goRestaurantes()">Restaurantes</a>
       </nav>
-      <button (click)="openLoginDialog()" class="loginbutton">Log In</button>
-      <button (click)="openRegisterRestaurantDialog()" class="signupbutton">
-        Sign Up
-      </button>
+
+      <!-- mostrar si no esta logueado -->
+
+      <div *ngIf=" !loggedIn">
+
+        
+              <button  (click)="openLoginDialog()" class="loginbutton">Log In</button>
+              <button  (click)="openRegisterDialog()" class="signupbutton">
+                Sign Up
+              </button>
+      </div>
+
+      <!-- mostrar si esta logueado -->
+
+      <div *ngIf=" loggedIn">
+
+        
+        <button  (click)="logout()" class="signupbutton">
+          Log Out
+        </button>
+      </div>
     </div>
   </div>
 </header>

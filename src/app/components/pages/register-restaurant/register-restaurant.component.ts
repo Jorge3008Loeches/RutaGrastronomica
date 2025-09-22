@@ -12,7 +12,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { Usuario } from '../../../models/usuario';
-import { UserServiceService } from '../../../services/user-service.service';
+import { UserService } from '../../../services/user-service.service';
+import { Restaurante } from '../../../models/restaurante';
 
 @Component({
   selector: 'app-register-restaurant',
@@ -32,21 +33,20 @@ import { UserServiceService } from '../../../services/user-service.service';
 export class RegisterRestaurantComponent {
   private _formBuilder = inject(FormBuilder);
 
-  nuevoUsuario: Usuario = {
+  nuevoUsuario: Restaurante = {
     nombre: '',
-    descripcion: '',
+
     domicilio: '',
-    email: '',
+
     latitude: 0,
     longitude: 0,
     rating: 0,
     photoreference: '',
-    password: '',
   };
 
   constructor(
     private dialogRef: MatDialogRef<RegisterRestaurantComponent>,
-    private usuarioService: UserServiceService
+    private usuarioService: UserService
   ) {}
 
   firstFormGroup = this._formBuilder.group({
@@ -64,38 +64,39 @@ export class RegisterRestaurantComponent {
     longitude: [0, Validators.required],
   });
 
-  onLogin() {
-    const form1 = this.firstFormGroup.value;
-    const form2 = this.secondFormGroup.value;
-
-    if (!form1 || !form2) return;
-
-    const usuario: Usuario = {
-      nombre: form1.nombre!,
-      email: form1.email!,
-      photoreference: form1.photoreference || '',
-      domicilio: form2.domicilio!,
-      descripcion: form2.descripcion || '',
-      latitude: form2.latitude ?? 0,
-      longitude: form2.longitude ?? 0,
-      rating: 0, // puedes dejarlo fijo por ahora
-      password: form2.password!,
-    };
-
-    if (form2.password !== form2.password2) {
-      alert('Las contraseñas no coinciden');
-      return;
-    }
-
-    this.usuarioService.create(usuario).subscribe({
-      next: res => {
-        console.log('usuario registrado', res);
-        this.dialogRef.close();
-      },
-      error: err => {
-        console.error('error al registrar', err);
-      },
-    });
+  onPost() {
+    console.log('hola mundo');
   }
-  isLinear = false;
+  //   const form1 = this.firstFormGroup.value;
+  //   const form2 = this.secondFormGroup.value;
+
+  //   if (!form1 || !form2) return;
+
+  //   const restaurante: Restaurante = {
+  //     nombre: form1.nombre!,
+
+  //     photoreference: form1.photoreference || '',
+  //     domicilio: form2.domicilio!,
+
+  //     latitude: form2.latitude ?? 0,
+  //     longitude: form2.longitude ?? 0,
+  //     rating: 0, // puedes dejarlo fijo por ahora
+  //   };
+
+  //   if (form2.password !== form2.password2) {
+  //     alert('Las contraseñas no coinciden');
+  //     return;
+  //   }
+
+  //   this.usuarioService.create(restaurante).subscribe({
+  //     next: res => {
+  //       console.log('usuario registrado', res);
+  //       this.dialogRef.close();
+  //     },
+  //     error: err => {
+  //       console.error('error al registrar', err);
+  //     },
+  //   });
+  // }
+  // isLinear = false;
 }

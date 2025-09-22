@@ -1,14 +1,10 @@
-import { Plato } from './platos';
+// src/app/models/usuario.ts
+import { Rol } from './rol';
 
 export interface Usuario {
   id?: number;
   nombre: string;
-  descripcion?: string;
-  domicilio: string;
-  email: string;
-  latitude: number;
-  longitude: number;
-  rating?: number;
-  photoreference?: string;
   password: string;
+  restauranteId?: number; // ID del restaurante asociado (puede ser null)
+  rol?: Rol; // Puede omitirse al crear si quieres que se asigne PROPIETARIO por defecto
 }

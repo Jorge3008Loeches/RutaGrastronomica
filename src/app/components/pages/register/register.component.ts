@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../../../services/user-service.service';
 
 @Component({
   selector: 'app-register',
@@ -12,17 +13,41 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  email: string = '';
+  private _formBuilder = inject(FormBuilder);
+
+  Username: string = '';
   password: string = '';
   password2: string = '';
-  telefono: string = '';
-  username: string = '';
 
-  constructor(private dialogRef: MatDialogRef<RegisterComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<RegisterComponent>,
+    private usuarioService: UserService
+  ) {}
 
-  onLogin() {
-    console.log('email', this.email);
+  onRegister() {
+    console.log('name', this.Username);
     console.log('password', this.password);
-    this.dialogRef.close();
+
+    if (this.password !== this.password2) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
+    const nuevoUsuario = {
+      nombre: this.Username,
+      password: this.password,
+    };
+
+    this.usuarioService.create(nuevoUsuario).subscribe({
+      next: usuarioCreado => {
+        console.log('Usuario creado:', usuarioCreado);
+        alert('Usuario registrado con éxito');
+        this.dialogRef.close();
+      },
+      error: error => {
+        console.error('Error al crear usuario:', error);
+        alert('Error al registrar usuario');
+      },
+    });
   }
 }

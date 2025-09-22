@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserServiceService } from '../../../services/user-service.service';
+import { UserService } from '../../../services/user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent {
 
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>,
-    private userService: UserServiceService
+    private userService: UserService
   ) {}
 
   onLogin() {
@@ -27,11 +27,18 @@ export class LoginComponent {
     console.log('password', this.password);
 
     this.userService.login(this.nombreUsuario, this.password).subscribe({
-      next: res => {
+      next: (res: string) => {
         console.log('login exitoso', res);
+
+        //guardar el token
+        localStorage.setItem('token', res);
+
         this.dialogRef.close(true);
+
+        //notificar al authservie que el estado cambio
+        this.userService.notifyLoginStatus(true);
       },
-      error: err => {
+      error: (err: any) => {
         console.error('error en el login:', err);
         alert('usuario o contrase;a incorrecto');
       },
