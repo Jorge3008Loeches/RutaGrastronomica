@@ -5,10 +5,10 @@
   </div> -->
   <div class="grid-container">
     <div class="column column-30">
-      <app-results [restaurantesRetrieved]="restaurantesRetrieved"></app-results>
+      <app-results [platosRetrieved]="platosRetrieved()"></app-results>
     </div>
     <div class="column column-70">
-      <app-google-map [restaurantesRetrieved]="restaurantesRetrieved"> </app-google-map>
+      <app-google-map [restaurantesRetrieved]="restaurantesRetrieved()"> </app-google-map>
     </div>
   </div>
 </div>

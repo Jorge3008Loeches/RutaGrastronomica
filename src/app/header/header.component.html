@@ -14,8 +14,9 @@
       <input
         class="searchinput"
         type="text"
+        #searchBox
         />
-      <button mat-icon-button class="searchbutton" (click)="goToSearch()">
+      <button mat-icon-button class="searchbutton" (click)="goToSearch(`/nombre/${searchBox.value}`)">
         <mat-icon>search</mat-icon>
       </button>
     </div>

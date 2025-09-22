@@ -1,13 +1,13 @@
 <div class="container">
   <div class="food">
     <div
-      *ngFor="let item of restaurantesRetrieved"
+      *ngFor="let item of platosRetrieved"
       #restaurantItem
-      [attr.data-id]="item.id_restaurante"
+      [attr.data-id]="item.id_plato"
     >
 
     <app-platos-side-bar
-      [restaurante]="item"></app-platos-side-bar>
+      [plato]="item"></app-platos-side-bar>
 
   </div>
   </div>
