@@ -11,6 +11,7 @@ import { PlatosSideBarComponent } from '../platos-side-bar/platos-side-bar.compo
 import { CommonModule } from '@angular/common';
 import { RetrievedRestaurant } from '../../models/restaurante';
 import { ResultsService } from '../../services/results.service';
+import { PlatosRetrieved } from '../../models/platos';
 
 @Component({
   selector: 'app-results',
@@ -20,6 +21,7 @@ import { ResultsService } from '../../services/results.service';
 })
 export class ResultsComponent {
   @Input() restaurantesRetrieved: RetrievedRestaurant[] = [];
+  @Input() platosRetrieved: PlatosRetrieved[] = [];
   @ViewChildren('restaurantItem') items!: QueryList<ElementRef<HTMLDivElement>>;
 
   constructor(public ResultsService: ResultsService) {

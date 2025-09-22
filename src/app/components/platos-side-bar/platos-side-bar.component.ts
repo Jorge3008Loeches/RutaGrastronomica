@@ -4,6 +4,7 @@ import { PlatosRetrieved } from '../../models/platos';
 import { CommonModule } from '@angular/common';
 import { RetrievedRestaurant } from '../../models/restaurante';
 import { ResultsService } from '../../services/results.service';
+import { filterResultsService } from '../../services/filter-results.service';
 
 @Component({
   selector: 'app-platos-side-bar',
@@ -15,8 +16,16 @@ export class PlatosSideBarComponent {
   @Input() plato?: PlatosRetrieved; // o crea una interfaz mejor tipada
   @Input() restaurante?: RetrievedRestaurant; // o crea una interfaz mejor tipada
   restauranteSeleccionado;
-  constructor(public ResultsService: ResultsService) {
+  constructor(
+    public ResultsService: ResultsService,
+    private filterService: filterResultsService
+  ) {
     this.restauranteSeleccionado = this.ResultsService.selectedResult;
+  }
+
+  filtrarPorPlato(filter: string, plato: PlatosRetrieved) {
+    this.ResultsService.setSelectedPlate(plato);
+    this.filterService.filtrarRestaurantesPorPlato(filter);
   }
 
   go(restaurant: RetrievedRestaurant) {
