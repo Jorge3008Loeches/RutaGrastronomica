@@ -42,10 +42,6 @@ export class HeaderComponent {
   }
 
   goToSearch(filter?: string) {
-    console.log('🚀 ~ HeaderComponent ~ goToSearch ~ filter:', filter);
-    // Aquí puedes capturar el valor del input si quieres
-    // Por ejemplo: const query = this.searchInputValue;
-
     this.router.navigate(['/search']);
     if (filter) {
       this.filtrarPatos(filter);
