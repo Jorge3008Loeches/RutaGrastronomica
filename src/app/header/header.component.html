@@ -25,19 +25,19 @@
 
         <a class="platosbutton" (click)="goPlatos()">Platos</a>
 
-        <a class="Restaurantesbutton" (click)="goRestaurantes()">Restaurantes</a>
+        <a class="Restaurantesbutton"  (click)="goRestaurantes()">Restaurantes</a>
       </nav>
 
       <!-- mostrar si no esta logueado -->
 
-      <div *ngIf=" !loggedIn">
+     
 
         
-              <button  (click)="openLoginDialog()" class="loginbutton">Log In</button>
-              <button  (click)="openRegisterDialog()" class="signupbutton">
+              <button *ngIf=" !loggedIn"  (click)="openLoginDialog()" class="loginbutton">Log In</button>
+              <button *ngIf=" !loggedIn"  (click)="openRegisterDialog()" class="signupbutton">
                 Sign Up
               </button>
-      </div>
+      
 
       <!-- mostrar si esta logueado -->
 

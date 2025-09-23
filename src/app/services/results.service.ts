@@ -30,4 +30,9 @@ export class ResultsService {
   getRestaurantes(): Observable<RetrievedRestaurant[]> {
     return this.http.get<RetrievedRestaurant[]>(this.backendUrl);
   }
+
+  // Método para obtener un restaurante por su ID
+  getRestauranteById(id: number): Observable<RetrievedRestaurant> {
+    return this.http.get<RetrievedRestaurant>(`${this.backendUrl}/${id}`);
+  }
 }

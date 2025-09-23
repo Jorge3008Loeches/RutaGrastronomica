@@ -1,0 +1,15 @@
+<div class="platos-container">
+  <mat-card *ngFor="let plato of platos" class="plato-card">
+    <mat-card-header>
+      <mat-card-title>{{ plato.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ getCategoriaNombre(plato.categoria) }}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
+    <mat-card-content>
+      <p><strong>Descripción:</strong> {{ plato.descripcion }}</p>
+      <p><strong>Ingredientes:</strong> {{ plato.ingredientes }}</p>
+      <p><strong>Receta:</strong> {{ plato.receta }}</p>
+
+    </mat-card-content>
+  </mat-card>
+</div>

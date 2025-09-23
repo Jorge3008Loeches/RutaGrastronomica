@@ -1,0 +1,18 @@
+<div *ngIf="restaurante">
+  <h2>Mi Restaurante</h2>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ restaurante?.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ restaurante?.domicilio }}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="restaurante.photoreference" mat-card-image [src]="restaurante?.photoreference" alt="{{ restaurante?.nombre }}">
+    <mat-card-content>
+      <p><strong>Ubicación:</strong> Lat: {{ restaurante?.latitude }}, Long: {{ restaurante?.longitude }}</p>
+      <p><strong>Rating:</strong> {{ restaurante?.rating || 'No rating available' }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="!restaurante">
+  <p>No tienes un restaurante asociado.</p>
+</div>

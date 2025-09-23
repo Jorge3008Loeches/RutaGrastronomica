@@ -29,6 +29,10 @@ export class HeaderComponent {
     });
   }
 
+  ngOnInit() {
+    console.log(localStorage);
+  }
+
   loggedIn = false;
 
   openRegisterRestaurantDialog() {
@@ -67,15 +71,14 @@ export class HeaderComponent {
 
   goRestaurantes() {
     if (this.loggedIn) {
-      this.router.navigate(['/Misrestaurantes']);
+      this.router.navigate(['/MiRestaurante']);
     } else {
-      this.router.navigate(['/restaurantes']);
+      this.router.navigate(['/search']);
     }
   }
 
   logout() {
-    localStorage.removeItem('token');
-    this.userService.notifyLoginStatus(false);
+    this.authService.logout(); // Usamos el logout del AuthService
     this.router.navigate(['/']);
   }
 }
