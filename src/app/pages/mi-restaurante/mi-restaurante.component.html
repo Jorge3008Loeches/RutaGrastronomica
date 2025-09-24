@@ -1,18 +1,24 @@
-<div *ngIf="restaurante">
-  <h2>Mi Restaurante</h2>
-  <mat-card>
+<p class="title">Mi Restaurante</p >
+<div class="restaurante" *ngIf="restaurante">
+  <div class="container">
     <mat-card-header>
-      <mat-card-title>{{ restaurante?.nombre }}</mat-card-title>
-      <mat-card-subtitle>{{ restaurante?.domicilio }}</mat-card-subtitle>
+      <p class="titleRestaurante">{{ restaurante?.nombre }}</p>
+      <p class="direccion">{{ restaurante?.domicilio }}</p>
     </mat-card-header>
-    <img *ngIf="restaurante.photoreference" mat-card-image [src]="restaurante?.photoreference" alt="{{ restaurante?.nombre }}">
+
+    <img  class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
     <mat-card-content>
       <p><strong>Ubicación:</strong> Lat: {{ restaurante?.latitude }}, Long: {{ restaurante?.longitude }}</p>
       <p><strong>Rating:</strong> {{ restaurante?.rating || 'No rating available' }}</p>
     </mat-card-content>
-  </mat-card>
+    <div class="actions">
+<button class="buttonActualizar"  (click)="openUpdateDialog()">Actualizar Restaurante</button>
+    <button class="buttonDelete" (click)="deleteRestaurante()">Eliminar Restaurante</button>
+    </div>
+    
+  </div>
 </div>
 
 <div *ngIf="!restaurante">
-  <p>No tienes un restaurante asociado.</p>
+  <app-formulario-restaurante></app-formulario-restaurante>
 </div>

@@ -1,1 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+img {
+  height: 250px;
+}
+
+.title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.titleRestaurante {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 5px;
+  justify-content: center;
+  display: flex;
+}
+
+.direccion {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.container {
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #f5f5f5;
+  padding: 20px 20px 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.restaurante {
+  justify-content: center;
+  display: flex;
+}
+
+.actions {
+  margin-top: 30px;
+}
+
+.buttonActualizar {
+  font-family: 'Nunito';
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: white;
+  padding: 15px;
+  color: #333;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.buttonActualizar:hover {
+  background-color: #f7f7f7;
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}
+
+.buttonDelete {
+  font-family: 'Nunito';
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: rgb(255, 70, 70);
+  padding: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  text-transform: uppercase;
+  margin-right: 5px;
+}
+
+.buttonDelete:hover {
+  background-color: rgb(255, 86, 86);
+  transition: 0.3s;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);
+}

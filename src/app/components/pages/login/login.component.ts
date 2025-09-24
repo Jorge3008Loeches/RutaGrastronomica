@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../../../services/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
 
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   onLogin() {
@@ -37,6 +39,8 @@ export class LoginComponent {
 
         //notificar al authservie que el estado cambio
         this.userService.notifyLoginStatus(true);
+
+        this.router.navigate(['/']);
       },
       error: (err: any) => {
         console.error('error en el login:', err);

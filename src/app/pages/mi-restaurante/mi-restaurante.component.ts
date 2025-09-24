@@ -12,6 +12,10 @@ import {
   MatCardTitle,
 } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { FormularioRestauranteComponent } from '../../components/pages/formulario-restaurante/formulario-restaurante.component';
+import { UpdateRestaurantComponent } from '../../components/pages/update-restaurant/update-restaurant.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mi-restaurante',
@@ -22,6 +26,8 @@ import { CommonModule } from '@angular/common';
     MatCardSubtitle,
     MatCardContent,
     CommonModule,
+    FormularioRestauranteComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './mi-restaurante.component.html',
   styleUrl: './mi-restaurante.component.scss',
@@ -33,7 +39,8 @@ export class MiRestauranteComponent {
   constructor(
     private usuarioService: UserService,
     private resultsService: ResultsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -67,4 +74,11 @@ export class MiRestauranteComponent {
       console.log('Usuario no autenticado');
     }
   }
+
+  openUpdateDialog() {
+    this.dialog.open(UpdateRestaurantComponent, {
+      width: '400px',
+    });
+  }
+  deleteRestaurante() {}
 }

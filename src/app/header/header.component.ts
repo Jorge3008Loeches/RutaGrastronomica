@@ -78,7 +78,8 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.authService.logout(); // Usamos el logout del AuthService
     this.router.navigate(['/']);
+    this.authService.logout(); // Usamos el logout del AuthService
+    window.location.reload();
   }
 }

@@ -2,7 +2,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { RetrievedRestaurant } from '../models/restaurante';
+import { Restaurante, RetrievedRestaurant } from '../models/restaurante';
 
 @Injectable({
   providedIn: 'root',
@@ -34,5 +34,16 @@ export class ResultsService {
   // Método para obtener un restaurante por su ID
   getRestauranteById(id: number): Observable<RetrievedRestaurant> {
     return this.http.get<RetrievedRestaurant>(`${this.backendUrl}/${id}`);
+  }
+
+  createRestaurante(restaurante: Restaurante): Observable<RetrievedRestaurant> {
+    return this.http.post<RetrievedRestaurant>(this.backendUrl, restaurante);
+  }
+
+  updateRestaurante(restaurante: Restaurante): Observable<Restaurante> {
+    return this.http.put<Restaurante>(
+      `${this.backendUrl}/${restaurante.id}`,
+      restaurante
+    );
   }
 }

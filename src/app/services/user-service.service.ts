@@ -56,6 +56,15 @@ export class UserService {
     });
   }
 
+  updateUsuario(usuario: Usuario): Observable<Usuario> {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put<Usuario>(`${this.apiUrl}/${usuario.id}`, usuario, {
+      headers,
+    });
+  }
+
   getUsuario(): Observable<Usuario> {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
