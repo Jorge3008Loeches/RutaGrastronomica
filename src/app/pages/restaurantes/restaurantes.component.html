@@ -1,0 +1,15 @@
+<div class="platos-container">
+  <mat-card *ngFor="let restaurante of restaurantes" class="plato-card">
+    <mat-card-header>
+      <mat-card-title>{{ restaurante.nombre }}</mat-card-title>
+
+    </mat-card-header>
+    <img class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
+    <mat-card-content>
+      <p><strong>Domicilio:</strong> {{ restaurante.domicilio }}</p>
+      <!-- <p><strong>ratin:</strong> {{ restaurante.ingredientes }}</p>
+      <p><strong>Receta:</strong> {{ restaurante.receta }}</p> -->
+
+    </mat-card-content>
+  </mat-card>
+</div>

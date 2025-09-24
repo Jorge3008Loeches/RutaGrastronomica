@@ -1,0 +1,15 @@
+  <p *ngIf=" !loggedIn" class="propTitle">¿Eres propietario de un restaurante?</p>
+
+  <div *ngIf=" !loggedIn" class="propietarioContainer">
+    <img class="propimg" src="/assets/cocinero3.jpg" alt="" />
+    <div class="propTexto">
+      <p class="textgene">¿Listo para atraer más clientes a tu restaurante?</p>
+      <a class="registroLink" (click)="openRegisterDialog()"
+        >Registra tu restaurante!</a
+      >
+      <p class="textgene">ya soy Propietario!</p>
+      <button (click)="openLoginDialog()" class="inicioLink">
+        Inicia Secion
+      </button>
+    </div>
+  </div>

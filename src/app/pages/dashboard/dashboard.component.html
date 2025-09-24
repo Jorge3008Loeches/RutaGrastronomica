@@ -1,85 +1,48 @@
 <div class="main-container">
+
   <!-- slider tipos de comida -->
-  <p class="titleSliderPlato">Lo mejor para ti</p>
+
+  <app-slider-platos></app-slider-platos>
+
+  <!-- <p class="titleSliderPlato">Los 10 mejores platos para ti!</p>
 
   <div class="slider-wrapper">
-    <button class="slider-btn-left" (click)="scrollSlider('left')">←</button>
+    <button class="slider-btn-left" (click)="scrollSlider('left')">←</button> -->
 
-    <div class="slider-viewport" #sliderViewportPlatos>
+    <!-- <div class="slider-viewport" #sliderViewportPlatos>
       <div class="slider" #sliderPlatos>
-        <div class="slider-item" *ngFor="let plato of platos">
-          <img class="imgFood" [src]="plato.img" [alt]="plato.nombre" />
+        <div class="slider-item" *ngFor="let plato of platos"> -->
+          <!-- <img class="imgFood" [src]="plato.foto" [alt]="plato.nombre" /> -->
+          <!-- <img  class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
           <p class="nombreFood">{{ plato.nombre }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <button class="slider-btn-right" (click)="scrollSlider('right')">→</button>
-  </div>
+    <!-- <button class="slider-btn-right" (click)="scrollSlider('right')">→</button> -->
+  <!-- </div> -->
 
-  <!-- slider tipos de comida -->
-  <p class="titleSliderPlato">Elige tu tipo de cocina favorito</p>
-
-  <div class="slider-wrapper">
-    <button class="slider-btn-left" (click)="scrollSliderCoci('left')">
-      ←
-    </button>
-
-    <div class="slider-viewport" #sliderViewportCoci>
-      <div class="slider" #sliderCoci>
-        <div class="slider-item" *ngFor="let cocina of cocinas">
-          <img class="imgFood" [src]="cocina.img" [alt]="cocina.nombre" />
-          <p class="nombreFood">{{ cocina.nombre }}</p>
-        </div>
-      </div>
-    </div>
-
-    <button class="slider-btn-right" (click)="scrollSliderCoci('right')">
-      →
-    </button>
-  </div>
+  
 
   <!-- slider restaurantes -->
-
-  <p class="propTitle">Restaurantes dignos de atención</p>
-
-  <div class="slider-wrapper">
-    <button class="slider-btn-left" (click)="scrollSliderRes('left')">←</button>
-
-    <div class="slider-viewportRes" #sliderViewportRes>
-      <div class="slider" #sliderRes>
-        <div class="slider-itemRes" *ngFor="let restaurante of restaurantes">
-          <img
-            class="imgRestaurante"
-            [src]="restaurante.img"
-            [alt]="restaurante.nombre" />
-          <p class="tipoRestaurante">{{ restaurante.tipo }}</p>
-          <p class="nombreRestaurante">{{ restaurante.nombre }}</p>
-          <p class="ubicacionRestaurante">{{ restaurante.ubicacion }}</p>
-        </div>
-      </div>
-    </div>
-
-    <button class="slider-btn-right" (click)="scrollSliderRes('right')">
-      →
-    </button>
-  </div>
+<app-slider-restaurantes></app-slider-restaurantes>
 
   <!-- area de propietario -->
+   <app-prop-info></app-prop-info>
+<!-- 
+  <p *ngIf=" !loggedIn" class="propTitle">¿Eres propietario de un restaurante?</p>
 
-  <p class="propTitle">¿Eres propietario de un restaurante?</p>
-
-  <div class="propietarioContainer">
+  <div *ngIf=" !loggedIn" class="propietarioContainer">
     <img class="propimg" src="/assets/cocinero3.jpg" alt="" />
     <div class="propTexto">
       <p class="textgene">¿Listo para atraer más clientes a tu restaurante?</p>
-      <a class="registroLink" (click)="openRegisterRestaurantDialog()"
+      <a class="registroLink" (click)="openRegisterDialog()"
         >Registra tu restaurante!</a
       >
-      <p class="textgene">ya soy cliente!</p>
+      <p class="textgene">ya soy Propietario!</p>
       <button (click)="openLoginDialog()" class="inicioLink">
         Inicia Secion
       </button>
     </div>
-  </div>
+  </div> -->
 </div>
