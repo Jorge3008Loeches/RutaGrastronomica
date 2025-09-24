@@ -21,3 +21,15 @@ export interface RetrievedRestaurant {
   longitude: number;
   photoreference: string;
 }
+
+export interface RetrievedRestaurant {
+  id_restaurante: number;
+  reference: string;
+  nombre: string;
+  domicilio: string;
+  pricelevel: number | null;
+  rating: number;
+  latitude: number;
+  longitude: number;
+  photoreference: string;
+}

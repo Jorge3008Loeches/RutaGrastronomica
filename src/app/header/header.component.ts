@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-inject */
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +10,7 @@ import { RegisterRestaurantComponent } from '../components/pages/register-restau
 import { AuthService } from '../services/auth-service.service';
 import { NgIf } from '@angular/common';
 import { UserService } from '../services/user-service.service';
+import { filterResultsService } from '../services/filter-results.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +24,8 @@ export class HeaderComponent {
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private filterService: filterResultsService
   ) {
     this.userService.isLoggedIn$.subscribe(status => {
       this.loggedIn = status;
@@ -54,11 +57,15 @@ export class HeaderComponent {
     });
   }
 
-  goToSearch() {
-    // Aquí puedes capturar el valor del input si quieres
-    // Por ejemplo: const query = this.searchInputValue;
-
+  goToSearch(filter?: string) {
     this.router.navigate(['/search']);
+    if (filter) {
+      this.filtrarPatos(filter);
+    }
+  }
+
+  filtrarPatos(filter: string) {
+    this.filterService.filtrarPlato(filter);
   }
 
   goPlatos() {
