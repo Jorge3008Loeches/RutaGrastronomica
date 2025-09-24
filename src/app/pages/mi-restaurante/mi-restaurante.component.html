@@ -12,7 +12,7 @@
       <p><strong>Rating:</strong> {{ restaurante?.rating || 'No rating available' }}</p>
     </mat-card-content>
     <div class="actions">
-<button class="buttonActualizar"  (click)="openUpdateDialog()">Actualizar Restaurante</button>
+<button class="buttonActualizar"  (click)="openUpdateDialog(restaurante)">Actualizar Restaurante</button>
     <button class="buttonDelete" (click)="deleteRestaurante()">Eliminar Restaurante</button>
     </div>
     

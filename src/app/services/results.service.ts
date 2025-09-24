@@ -23,6 +23,10 @@ export class ResultsService {
     this.selectedResult.set(rest);
   }
 
+  deleteRestaurante(id: number) {
+    return this.http.delete(`http://localhost:8080/api/restaurantes/${id}`);
+  }
+
   goToRestaurant(rest: RetrievedRestaurant) {
     this.restaurantSubject.next(rest);
   }

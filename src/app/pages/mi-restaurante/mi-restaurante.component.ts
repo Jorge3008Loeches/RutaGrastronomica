@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mi-restaurante',
+  standalone: true,
   imports: [
     MatCardHeader,
     MatCard,
@@ -75,10 +76,31 @@ export class MiRestauranteComponent {
     }
   }
 
-  openUpdateDialog() {
+  openUpdateDialog(restaurante: Restaurante) {
     this.dialog.open(UpdateRestaurantComponent, {
       width: '400px',
+      data: restaurante,
     });
   }
-  deleteRestaurante() {}
+  deleteRestaurante(): void {
+    if (!this.restaurante) return;
+
+    const confirmed = confirm(
+      '¿Estás seguro de que deseas eliminar este restaurante? Esta acción no se puede deshacer.'
+    );
+
+    if (confirmed) {
+      const restauranteId = (this.restaurante as any).id_restaurante;
+
+      this.resultsService.deleteRestaurante(restauranteId).subscribe({
+        next: () => {
+          console.log('✅ Restaurante eliminado exitosamente.');
+          this.restaurante = null; // Oculta el restaurante en la vista
+        },
+        error: err => {
+          console.error('❌ Error al eliminar el restaurante:', err);
+        },
+      });
+    }
+  }
 }
