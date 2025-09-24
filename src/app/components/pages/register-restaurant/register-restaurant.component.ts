@@ -11,6 +11,9 @@ import {
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
+import { Usuario } from '../../../models/usuario';
+import { UserService } from '../../../services/user-service.service';
+import { Restaurante } from '../../../models/restaurante';
 
 @Component({
   selector: 'app-register-restaurant',
@@ -30,37 +33,70 @@ import { MatStepperModule } from '@angular/material/stepper';
 export class RegisterRestaurantComponent {
   private _formBuilder = inject(FormBuilder);
 
-  email: string = '';
-  direccion: string = '';
-  telefono: string = '';
-  password: string = '';
-  password2: string = '';
-  name: string = '';
-  descripcion: string = '';
-  ubicacion: string = '';
-  imagen: string = '';
+  nuevoUsuario: Restaurante = {
+    nombre: '',
 
-  constructor(private dialogRef: MatDialogRef<RegisterRestaurantComponent>) {}
+    domicilio: '',
+
+    latitude: 0,
+    longitude: 0,
+    rating: 0,
+    photoreference: '',
+  };
+
+  constructor(
+    private dialogRef: MatDialogRef<RegisterRestaurantComponent>,
+    private usuarioService: UserService
+  ) {}
 
   firstFormGroup = this._formBuilder.group({
-    name: ['', Validators.required],
+    nombre: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    telefono: ['', Validators.required],
-    password: ['', Validators.required],
-    password2: ['', Validators.required],
+    photoreference: [''],
   });
 
   secondFormGroup = this._formBuilder.group({
     descripcion: ['', Validators.required],
-    direccion: ['', Validators.required],
-    ubicacion: ['', Validators.required],
-    imagen: ['', Validators.required],
+    domicilio: ['', Validators.required],
+    password: ['', Validators.required],
+    password2: ['', Validators.required],
+    latitude: [0, Validators.required],
+    longitude: [0, Validators.required],
   });
 
-  onLogin() {
-    console.log('email', this.email);
-    console.log('name', this.name);
-    this.dialogRef.close();
+  onPost() {
+    console.log('hola mundo');
   }
-  isLinear = false;
+  //   const form1 = this.firstFormGroup.value;
+  //   const form2 = this.secondFormGroup.value;
+
+  //   if (!form1 || !form2) return;
+
+  //   const restaurante: Restaurante = {
+  //     nombre: form1.nombre!,
+
+  //     photoreference: form1.photoreference || '',
+  //     domicilio: form2.domicilio!,
+
+  //     latitude: form2.latitude ?? 0,
+  //     longitude: form2.longitude ?? 0,
+  //     rating: 0, // puedes dejarlo fijo por ahora
+  //   };
+
+  //   if (form2.password !== form2.password2) {
+  //     alert('Las contraseñas no coinciden');
+  //     return;
+  //   }
+
+  //   this.usuarioService.create(restaurante).subscribe({
+  //     next: res => {
+  //       console.log('usuario registrado', res);
+  //       this.dialogRef.close();
+  //     },
+  //     error: err => {
+  //       console.error('error al registrar', err);
+  //     },
+  //   });
+  // }
+  // isLinear = false;
 }

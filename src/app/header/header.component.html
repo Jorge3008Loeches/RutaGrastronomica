@@ -1,11 +1,11 @@
 <header>
-  <div class="top-bar">
+  <!-- <div class="top-bar">
     <div class="registroRestaurante">
       <a (click)="openRegisterRestaurantDialog()" class="registroButton"
         >Registrar mi restaurante</a
       >
     </div>
-  </div>
+  </div> -->
   <div class="container">
     <a href="">
       <img class="logo" src="/assets/logo.png" alt="" />
@@ -23,13 +23,32 @@
 
     <div class="acciones">
       <nav class="navigation">
-        <a class="platosbutton" href="">Platos</a>
-        <a class="Restaurantesbutton" href="">Restaurantes</a>
+
+        <a class="platosbutton" (click)="goPlatos()">Platos</a>
+
+        <a class="Restaurantesbutton"  (click)="goRestaurantes()">Restaurantes</a>
       </nav>
-      <button (click)="openLoginDialog()" class="loginbutton">Log In</button>
-      <button (click)="openRegisterDialog()" class="signupbutton">
-        Sign Up
-      </button>
+
+      <!-- mostrar si no esta logueado -->
+
+     
+
+        
+              <button *ngIf=" !loggedIn"  (click)="openLoginDialog()" class="loginbutton">Log In</button>
+              <button *ngIf=" !loggedIn"  (click)="openRegisterDialog()" class="signupbutton">
+                Sign Up
+              </button>
+      
+
+      <!-- mostrar si esta logueado -->
+
+      <div *ngIf=" loggedIn">
+
+        
+        <button  (click)="logout()" class="signupbutton">
+          Log Out
+        </button>
+      </div>
     </div>
   </div>
 </header>

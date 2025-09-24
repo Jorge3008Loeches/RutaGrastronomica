@@ -1,16 +1,18 @@
 <p class="title">Registrate tu restaurante!</p>
 
-<form [formGroup]="firstFormGroup" mat-dialog-content>
-  <mat-stepper class="custom-stepper"   [linear]="true" >
 
-    <mat-step class="matStep" [stepControl]="firstFormGroup"  label="Step 1">
-
+<!-- primer form -->
+<mat-stepper class="custom-stepper"   [linear]="true" >
+  
+  <mat-step class="matStep" [stepControl]="firstFormGroup"  label="Step 1">
+    <form [formGroup]="firstFormGroup" mat-dialog-content>
+    
       <mat-form-field class="full-width">
 
         <mat-label>Nombre del restaurante</mat-label>
 
         <input matInput type="string" 
-        formControlName="name"
+        formControlName="nombre"
         required />
       </mat-form-field>
 
@@ -24,29 +26,11 @@
          required />
       </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-label>Telefono</mat-label>
-        <input
-          matInput
-          type="string"
-          formControlName="telefono" 
-          required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>password</mat-label>
-        <input
-          matInput
-          type="string"
-          formControlName="password"
-          required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>repite la password</mat-label>
-        <input
-          matInput
-          type="string"
-          formControlName="password2"
-          required />
-      </mat-form-field>
+  <mat-label>Referencia de foto</mat-label>
+  <input matInput type="text" formControlName="photoreference" />
+</mat-form-field>
+      
+      
       <div mat-dialog-actions>
         <button class="cancelbutton" mat-dialog-close>cancelar</button>
         <button
@@ -56,9 +40,13 @@
           siguiente
         </button>
       </div>
+        <!-- cierre del primer form -->
+</form>
+
     </mat-step>
     <mat-step  [stepControl]="secondFormGroup" class="matStep" label="Step 2">
-      <form [formGroup]="secondFormGroup">
+      <!-- segundo form -->
+      <form [formGroup]="secondFormGroup"> 
         <mat-form-field class="full-width">
           <mat-label>descripcion</mat-label>
           <input
@@ -69,36 +57,53 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <mat-label>direccion</mat-label>
+          <mat-label>domicilio</mat-label>
           <input
             matInput
             type="string"
-            formControlName="direccion"
+            formControlName="domicilio"
             required />
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <mat-label>ubicacion</mat-label>
-          <input
-            matInput
-            type="string"
-            formControlName="ubicacion"
-            required />
-        </mat-form-field>
+  <mat-label>Latitud</mat-label>
+  <input matInput type="number" formControlName="latitude" required />
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <mat-label>Longitud</mat-label>
+  <input matInput type="number" formControlName="longitude" required />
+</mat-form-field>
+
+
 
         <mat-form-field class="full-width">
-          <mat-label>imagen</mat-label>
-          <input
-            matInput
-            type="string"
-            formControlName="imagen"
-            required />
-        </mat-form-field>
+        <mat-label>password</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="password"
+          required />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>repite la password</mat-label>
+        <input
+          matInput
+          type="string"
+          formControlName="password2"
+          required />
+      </mat-form-field>
+
+        
+
+       
         <div mat-dialog-actions>
           <button class="cancelbutton" matStepperPrevious>Regresar</button>
-          <button class="loginbutton" (click)="onLogin()">siguiente</button>
+          <button class="loginbutton" (click)="onPost()">siguiente</button>
         </div>
+        <!-- cierre del segundo form -->
       </form>
     </mat-step>
   </mat-stepper>
-</form>
+

@@ -1,0 +1,36 @@
+
+
+<form  *ngIf="restauranteForm" [formGroup]="restauranteForm" (ngSubmit)="onUpdate()" class="form-container">
+
+  <p class="title">Editar Restaurante</p>
+  <mat-form-field appearance="outline" class="custom-field">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" placeholder="nombre del restaurant" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="custom-field">
+    <mat-label>Domicilio</mat-label>
+    <input matInput formControlName="domicilio" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="custom-field">
+    <mat-label>Latitud</mat-label>
+    <input matInput type="number" formControlName="latitude" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="custom-field">
+    <mat-label>Longitud</mat-label>
+    <input matInput type="number" formControlName="longitude" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="custom-field">
+    <mat-label>Photo Reference (opcional)</mat-label>
+    <input matInput formControlName="photoreference" />
+  </mat-form-field>
+
+  <div class="actions">
+    <button type="button" class="cancel" (click)="onCancel()">Cancelar</button>
+    <button type="submit" class="submit" [disabled]="restauranteForm.invalid">Guardar cambios</button>
+  </div>
+
+</form>

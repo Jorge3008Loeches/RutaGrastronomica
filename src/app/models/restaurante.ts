@@ -1,21 +1,25 @@
 import { Plato } from './platos';
 
 export interface Restaurante {
-  id: string;
+  id?: number;
   nombre: string;
-  descripcion?: string;
-  direccion: string;
-  telefono?: string;
-  email?: string;
-  horario?: string;
-  ubicacion?: {
-    lat: number;
-    lng: number;
-  };
-  imagenUrl?: string;
-  platosTipicos?: Plato[];
-  calificacionPromedio?: number;
-  password: string;
+  domicilio: string;
+  latitude: number;
+  longitude: number;
+  rating?: number;
+  photoreference?: string;
+}
+
+export interface RetrievedRestaurant {
+  id_restaurante: number;
+  reference: string;
+  nombre: string;
+  domicilio: string;
+  pricelevel: number | null;
+  rating: number;
+  latitude: number;
+  longitude: number;
+  photoreference: string;
 }
 
 export interface RetrievedRestaurant {

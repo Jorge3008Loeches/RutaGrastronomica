@@ -1,0 +1,106 @@
+import { Component } from '@angular/core';
+import { Usuario } from '../../models/usuario';
+import { Restaurante } from '../../models/restaurante';
+import { ResultsService } from '../../services/results.service';
+import { UserService } from '../../services/user-service.service';
+import { AuthService } from '../../services/auth-service.service';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardSubtitle,
+  MatCardTitle,
+} from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { FormularioRestauranteComponent } from '../../components/pages/formulario-restaurante/formulario-restaurante.component';
+import { UpdateRestaurantComponent } from '../../components/pages/update-restaurant/update-restaurant.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-mi-restaurante',
+  standalone: true,
+  imports: [
+    MatCardHeader,
+    MatCard,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardContent,
+    CommonModule,
+    FormularioRestauranteComponent,
+    ReactiveFormsModule,
+  ],
+  templateUrl: './mi-restaurante.component.html',
+  styleUrl: './mi-restaurante.component.scss',
+})
+export class MiRestauranteComponent {
+  usuario: Usuario | null = null;
+  restaurante: Restaurante | null = null;
+
+  constructor(
+    private usuarioService: UserService,
+    private resultsService: ResultsService,
+    private authService: AuthService,
+    private dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {
+    console.log(localStorage);
+    if (this.authService.isAuthenticated()) {
+      // Obtener usuario logueado
+      this.usuarioService.getUsuario().subscribe({
+        next: usuario => {
+          if (usuario) {
+            this.usuario = usuario;
+
+            // Obtener restaurante asociado al usuario
+            if (usuario.restauranteId) {
+              this.resultsService
+                .getRestauranteById(usuario.restauranteId)
+                .subscribe(restaurante => {
+                  this.restaurante = restaurante;
+                });
+            }
+          } else {
+            console.log('No se encontró el usuario.');
+            // Aquí puedes agregar lógica para manejar el caso cuando no haya usuario (ej. redirigir al login).
+          }
+        },
+        error: err => {
+          console.error('Error al obtener el usuario:', err);
+          // Aquí puedes manejar el error (por ejemplo, redirigir al login si hay un error en la solicitud).
+        },
+      });
+    } else {
+      console.log('Usuario no autenticado');
+    }
+  }
+
+  openUpdateDialog(restaurante: Restaurante) {
+    this.dialog.open(UpdateRestaurantComponent, {
+      width: '400px',
+      data: restaurante,
+    });
+  }
+  deleteRestaurante(): void {
+    if (!this.restaurante) return;
+
+    const confirmed = confirm(
+      '¿Estás seguro de que deseas eliminar este restaurante? Esta acción no se puede deshacer.'
+    );
+
+    if (confirmed) {
+      const restauranteId = (this.restaurante as any).id_restaurante;
+
+      this.resultsService.deleteRestaurante(restauranteId).subscribe({
+        next: () => {
+          console.log('✅ Restaurante eliminado exitosamente.');
+          this.restaurante = null; // Oculta el restaurante en la vista
+        },
+        error: err => {
+          console.error('❌ Error al eliminar el restaurante:', err);
+        },
+      });
+    }
+  }
+}

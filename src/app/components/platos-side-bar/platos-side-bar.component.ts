@@ -27,7 +27,6 @@ export class PlatosSideBarComponent {
     this.ResultsService.setSelectedPlate(plato);
     this.filterService.filtrarRestaurantesPorPlato(filter);
   }
-
   go(restaurant: RetrievedRestaurant) {
     this.ResultsService.goToRestaurant(restaurant);
   }

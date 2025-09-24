@@ -1,0 +1,24 @@
+<p class="title">Mi Restaurante</p >
+<div class="restaurante" *ngIf="restaurante">
+  <div class="container">
+    <mat-card-header>
+      <p class="titleRestaurante">{{ restaurante?.nombre }}</p>
+      <p class="direccion">{{ restaurante?.domicilio }}</p>
+    </mat-card-header>
+
+    <img  class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
+    <mat-card-content>
+      <p><strong>Ubicación:</strong> Lat: {{ restaurante?.latitude }}, Long: {{ restaurante?.longitude }}</p>
+      <p><strong>Rating:</strong> {{ restaurante?.rating || 'No rating available' }}</p>
+    </mat-card-content>
+    <div class="actions">
+<button class="buttonActualizar"  (click)="openUpdateDialog(restaurante)">Actualizar Restaurante</button>
+    <button class="buttonDelete" (click)="deleteRestaurante()">Eliminar Restaurante</button>
+    </div>
+    
+  </div>
+</div>
+
+<div *ngIf="!restaurante">
+  <app-formulario-restaurante></app-formulario-restaurante>
+</div>
