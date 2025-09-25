@@ -31,6 +31,10 @@ export class PlatosSideBarComponent {
     this.ResultsService.goToRestaurant(restaurant);
   }
 
+  eliminarPato(id: number) {
+    this.filterService.eliminarPlato(id);
+  }
+
   parseIngredientes(ingredientes?: string): string[] {
     return ingredientes ? ingredientes.split(/[;,]/).map(i => i.trim()) : [];
   }
