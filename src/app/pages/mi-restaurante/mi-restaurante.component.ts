@@ -1,16 +1,12 @@
-import { Component } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @angular-eslint/prefer-inject */
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 import { Restaurante } from '../../models/restaurante';
 import { ResultsService } from '../../services/results.service';
 import { UserService } from '../../services/user-service.service';
 import { AuthService } from '../../services/auth-service.service';
-import {
-  MatCard,
-  MatCardContent,
-  MatCardHeader,
-  MatCardSubtitle,
-  MatCardTitle,
-} from '@angular/material/card';
+import { MatCardContent, MatCardHeader } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { FormularioRestauranteComponent } from '../../components/pages/formulario-restaurante/formulario-restaurante.component';
 import { UpdateRestaurantComponent } from '../../components/pages/update-restaurant/update-restaurant.component';
@@ -22,9 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     MatCardHeader,
-    MatCard,
-    MatCardTitle,
-    MatCardSubtitle,
     MatCardContent,
     CommonModule,
     FormularioRestauranteComponent,
@@ -33,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './mi-restaurante.component.html',
   styleUrl: './mi-restaurante.component.scss',
 })
-export class MiRestauranteComponent {
+export class MiRestauranteComponent implements OnInit {
   usuario: Usuario | null = null;
   restaurante: Restaurante | null = null;
 
