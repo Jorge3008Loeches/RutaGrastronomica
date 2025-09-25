@@ -26,7 +26,9 @@ form {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
 
     &:focus {
       border-color: #4caf50;
@@ -77,4 +79,11 @@ form {
     border-radius: 8px;
     border: 1px solid #ef5350;
   }
+}
+
+.no-restaurante-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="platoForm" (ngSubmit)="onSubmit()">
+<form *ngIf="hasRestaurant" [formGroup]="platoForm" (ngSubmit)="onSubmit()">
   <label>
     Nombre:
     <input formControlName="nombre" type="text" />
@@ -39,3 +39,7 @@
     {{ mensaje }}
   </div>
 </form>
+
+<div *ngIf="!hasRestaurant" class="no-restaurante-container">
+  <h1>Debes crear primero un restaurante</h1>
+</div>

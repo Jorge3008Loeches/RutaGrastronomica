@@ -21,7 +21,6 @@ export class filterResultsService {
   }
 
   eliminarPlato(filter: number) {
-    console.log('id: ', filter);
     this.accionEliminarPlatoSource.next(filter);
   }
 }
