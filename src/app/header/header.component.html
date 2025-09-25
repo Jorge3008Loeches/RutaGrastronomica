@@ -7,7 +7,7 @@
     </div>
   </div> -->
   <div class="container">
-    <a href="">
+    <a routerLink="">
       <img class="logo" src="/assets/logo.png" alt="" />
     </a>
     <div class="busqueda">
@@ -24,9 +24,11 @@
     <div class="acciones">
       <nav class="navigation">
 
-        <a class="platosbutton" (click)="goPlatos()">Platos</a>
+        <a class="navButton" routerLink="/search">Platos</a>
 
-        <a class="Restaurantesbutton"  (click)="goRestaurantes()">Restaurantes</a>
+        <a class="navButton"  routerLink="/restaurantes">Restaurantes</a>
+        <a *ngIf="loggedIn" routerLink="/MiRestaurante" class="navButton">Mi restaurante</a>
+        <a *ngIf="loggedIn" routerLink="/crear-platos" class="navButton">Crear platos</a>
       </nav>
 
       <!-- mostrar si no esta logueado -->

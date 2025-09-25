@@ -65,29 +65,19 @@ header {
   flex: 2;
 }
 
-.platosbutton {
+
+.navButton {
   font-family: 'Nunito';
   border-radius: 8px;
   margin-left: 15px;
   text-decoration: none;
-  font-size: 23px;
+  font-size: 14px;
   color: black;
   padding: 10px;
   cursor: pointer;
 }
 
-.Restaurantesbutton {
-  font-family: 'Nunito';
-  border-radius: 8px;
-  margin-left: 15px;
-  text-decoration: none;
-  font-size: 23px;
-  color: black;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.Restaurantesbutton:hover {
+.navButton:hover {
   background-color: #f9fafa;
   transition: 0.3s;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.178);

@@ -74,4 +74,16 @@ export class ResultsService {
       `${this.backendUrl}platosTipicos${query ? query : ''}`
     );
   }
+  createPlato(
+    plato: Omit<PlatosRetrieved, 'id_plato'>
+  ): Observable<PlatosRetrieved> {
+    return this.http.post<PlatosRetrieved>(
+      `${this.backendUrl}platosTipicos/`,
+      plato
+    );
+  }
+
+  eliminarPlato(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.backendUrl}platosTipicos/id/${id}`);
+  }
 }
