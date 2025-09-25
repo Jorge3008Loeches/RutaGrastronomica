@@ -4,6 +4,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { PlatosComponent } from './pages/platos/platos.component';
 import { MiRestauranteComponent } from './pages/mi-restaurante/mi-restaurante.component';
+import { RestaurantesComponent } from './pages/restaurantes/restaurantes.component';
+import { CrearPlatosComponent } from './pages/crear-platos/crear-platos.component';
 
 export const routes: Routes = [
   {
@@ -23,7 +25,15 @@ export const routes: Routes = [
     path: 'platos',
   },
   {
+    component: RestaurantesComponent,
+    path: 'restaurantes',
+  },
+  {
     component: MiRestauranteComponent,
     path: 'MiRestaurante',
+  },
+  {
+    component: CrearPlatosComponent,
+    path: 'crear-platos',
   },
 ];

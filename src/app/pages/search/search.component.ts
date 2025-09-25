@@ -36,6 +36,9 @@ export class SearchComponent implements OnInit {
     this.filterService.filtrarPlatoAccion$.subscribe(filter => {
       this.loadPlatosTipicos(filter);
     });
+    this.filterService.eliminarPlatoAccion$.subscribe(id => {
+      this.eliminarPlato(id);
+    });
   }
 
   loadRestaurantes(filter?: string): void {
@@ -50,6 +53,19 @@ export class SearchComponent implements OnInit {
     this.ResultsService.getPlatosTipicos(filter).subscribe({
       next: platos => {
         this.platosRetrieved.set(platos);
+      },
+    });
+  }
+
+  eliminarPlato(plato: number) {
+    this.ResultsService.eliminarPlato(plato).subscribe({
+      next: () => {
+        // Quita el plato eliminado de la lista local
+        this.loadPlatosTipicos();
+        console.log('✅ Plato eliminado con éxito');
+      },
+      error: err => {
+        console.error('❌ Error al eliminar el plato:', err);
       },
     });
   }

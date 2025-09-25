@@ -72,7 +72,7 @@ export class HeaderComponent {
     if (this.loggedIn) {
       this.router.navigate(['/Misplatos']);
     } else {
-      this.router.navigate(['/platos']);
+      this.router.navigate(['/search']);
     }
   }
 
@@ -80,7 +80,7 @@ export class HeaderComponent {
     if (this.loggedIn) {
       this.router.navigate(['/MiRestaurante']);
     } else {
-      this.router.navigate(['/search']);
+      this.router.navigate(['/restaurantes']);
     }
   }
 

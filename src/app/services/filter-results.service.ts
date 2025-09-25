@@ -9,11 +9,19 @@ export class filterResultsService {
   private accionPlatoSource = new Subject<string>();
   filtrarPlatoAccion$ = this.accionPlatoSource.asObservable();
 
+  private accionEliminarPlatoSource = new Subject<number>();
+  eliminarPlatoAccion$ = this.accionEliminarPlatoSource.asObservable();
+
   filtrarRestaurantesPorPlato(filter: string) {
     this.accionRestauranteSource.next(filter);
   }
 
   filtrarPlato(filter: string) {
     this.accionPlatoSource.next(filter);
+  }
+
+  eliminarPlato(filter: number) {
+    console.log('id: ', filter);
+    this.accionEliminarPlatoSource.next(filter);
   }
 }

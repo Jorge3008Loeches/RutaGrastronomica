@@ -14,4 +14,10 @@ export class PlatosService {
   getPlatos(): Observable<PlatosRetrieved[]> {
     return this.http.get<PlatosRetrieved[]>(this.apiUrl);
   }
+
+  get10Platos(): Observable<PlatosRetrieved[]> {
+    return this.http.get<PlatosRetrieved[]>(
+      `http://localhost:8080/api/platosTipicos/top10`
+    );
+  }
 }

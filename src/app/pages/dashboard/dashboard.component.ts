@@ -4,253 +4,50 @@ import { LoginComponent } from '../../components/pages/login/login.component';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterRestaurantComponent } from '../../components/pages/register-restaurant/register-restaurant.component';
+import { RegisterComponent } from '../../components/pages/register/register.component';
+import { UserService } from '../../services/user-service.service';
+import { PlatosService } from '../../services/platos-service.service';
+import { PlatosRetrieved } from '../../models/platos';
+import { ResultsService } from '../../services/results.service';
+import { RetrievedRestaurant } from '../../models/restaurante';
+import { PropInfoComponent } from '../../components/prop-info/prop-info.component';
+import { SliderPlatosComponent } from '../../components/slider-platos/slider-platos.component';
+import { SliderRestaurantesComponent } from '../../components/slider-restaurantes/slider-restaurantes.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    PropInfoComponent,
+    SliderPlatosComponent,
+    SliderRestaurantesComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  @ViewChild('sliderViewportPlatos', { static: false })
-  sliderViewportPlatos!: ElementRef;
   @ViewChild('sliderViewportRes', { static: false })
   sliderViewportRes!: ElementRef;
-  @ViewChild('sliderViewportCoci', { static: false })
-  sliderViewportCoci!: ElementRef;
+
+  loggedIn = false;
+
+  restaurantes: RetrievedRestaurant[] = [];
 
   constructor(
     private router: Router,
-    private dialog: MatDialog
-  ) {}
-
-  platos = [
-    {
-      nombre: 'Hamburguesa',
-      img: 'assets/food1.jpg',
-    },
-    {
-      nombre: 'Patatas Bravas',
-      img: 'assets/food2.jpg',
-    },
-    {
-      nombre: 'Tacos',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Arepas',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Empanadas',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Pasta',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Churros',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Ramen',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Pizza',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Asado',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Sushi',
-      img: 'assets/food3.jpg',
-    },
-    {
-      nombre: 'Sopa',
-      img: 'assets/food3.jpg',
-    },
-  ];
-
-  cocinas = [
-    { nombre: 'Mediterraneo', img: 'assets/food1.jpg' },
-    { nombre: 'Español', img: 'assets/food2.jpg' },
-    { nombre: 'Asiatico', img: 'assets/food3.jpg' },
-    { nombre: 'Latino', img: 'assets/food3.jpg' },
-    { nombre: 'Japones', img: 'assets/food3.jpg' },
-    { nombre: 'Italiano', img: 'assets/food3.jpg' },
-    { nombre: 'Americano', img: 'assets/food3.jpg' },
-    { nombre: 'Indio', img: 'assets/food3.jpg' },
-    { nombre: 'Mexicano', img: 'assets/food3.jpg' },
-    { nombre: 'Peruano', img: 'assets/food3.jpg' },
-    { nombre: 'Chino', img: 'assets/food3.jpg' },
-    { nombre: 'Arabe', img: 'assets/food3.jpg' },
-  ];
-
-  restaurantes = [
-    {
-      nombre: 'Mediterraneo',
-      img: 'assets/food1.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Español',
-      img: 'assets/food2.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Asiatico',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Latino',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Japones',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Italiano',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Americano',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Indio',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Mexicano',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Peruano',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Chino',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-    {
-      nombre: 'Arabe',
-      img: 'assets/food3.jpg',
-      tipo: 'chino',
-      ubicacion: 'Madrid',
-    },
-  ];
-
-  currentIndex = 0;
-  itemsPerPage = 6;
-
-  currentIndexRes = 0;
-  itemsPerPageRes = 6;
-
-  scrollSlider(direction: 'left' | 'right') {
-    const container = this.sliderViewportPlatos.nativeElement;
-    if (!container) return;
-    const item = container.querySelector('.slider-item');
-    if (!item) return;
-
-    const itemWidth = item.offsetWidth + 40;
-    const scrollAmount = this.itemsPerPage * itemWidth;
-
-    if (direction === 'right') {
-      //Evitar pasar del max scroll
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      this.currentIndex++;
-      if (this.currentIndex * scrollAmount > maxScrollLeft) {
-        this.currentIndex = Math.floor(maxScrollLeft / scrollAmount);
-      }
-    } else if (direction === 'left' && this.currentIndex > 0) {
-      this.currentIndex--;
-    }
-
-    container.scrollTo({
-      left: this.currentIndex * scrollAmount,
-      behavior: 'smooth',
+    private dialog: MatDialog,
+    private userService: UserService,
+    private platosService: PlatosService,
+    private restaurnteService: ResultsService
+  ) {
+    this.userService.isLoggedIn$.subscribe(status => {
+      this.loggedIn = status;
     });
   }
 
-  scrollSliderCoci(direction: 'left' | 'right') {
-    const container = this.sliderViewportCoci.nativeElement;
-    if (!container) return;
-    const item = container.querySelector('.slider-item');
-    if (!item) return;
-
-    const itemWidth = item.offsetWidth + 40;
-    const scrollAmount = this.itemsPerPage * itemWidth;
-
-    if (direction === 'right') {
-      //Evitar pasar del max scroll
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      this.currentIndex++;
-      if (this.currentIndex * scrollAmount > maxScrollLeft) {
-        this.currentIndex = Math.floor(maxScrollLeft / scrollAmount);
-      }
-    } else if (direction === 'left' && this.currentIndex > 0) {
-      this.currentIndex--;
-    }
-
-    container.scrollTo({
-      left: this.currentIndex * scrollAmount,
-      behavior: 'smooth',
-    });
-  }
-
-  scrollSliderRes(direction: 'left' | 'right') {
-    const container = this.sliderViewportRes.nativeElement;
-    const item = container.querySelector('.slider-itemRes');
-    if (!item) return;
-
-    const itemWidth = item.offsetWidth + 40;
-    const scrollAmount = this.itemsPerPageRes * itemWidth;
-
-    if (direction === 'right') {
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      this.currentIndexRes++;
-      if (this.currentIndexRes * scrollAmount > maxScrollLeft) {
-        this.currentIndexRes = Math.floor(maxScrollLeft / scrollAmount);
-      }
-    } else if (direction === 'left' && this.currentIndexRes > 0) {
-      this.currentIndexRes--;
-    }
-
-    container.scrollTo({
-      left: this.currentIndexRes * scrollAmount,
-      behavior: 'smooth',
-    });
-  }
-
-  openRegisterRestaurantDialog() {
-    // Aquí puedes abrir un diálogo o redirigir a una página de registro de restaurante
-    this.dialog.open(RegisterRestaurantComponent, {
+  openRegisterDialog() {
+    this.dialog.open(RegisterComponent, {
       width: '400px',
     });
   }

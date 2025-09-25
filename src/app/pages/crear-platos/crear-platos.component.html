@@ -1,0 +1,41 @@
+<form [formGroup]="platoForm" (ngSubmit)="onSubmit()">
+  <label>
+    Nombre:
+    <input formControlName="nombre" type="text" />
+  </label>
+
+  <label>
+    Categoría:
+    <select formControlName="categoria">
+      <option *ngFor="let cat of categorias" [value]="cat">
+        {{ cat }}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    Descripción:
+    <textarea formControlName="descripcion"></textarea>
+  </label>
+
+  <label>
+    Ingredientes:
+    <textarea formControlName="ingredientes"></textarea>
+  </label>
+
+  <label>
+    Receta:
+    <textarea formControlName="receta"></textarea>
+  </label>
+
+  <label>
+    URL de la foto:
+    <input formControlName="foto" type="text" />
+  </label>
+
+  <button type="submit" [disabled]="platoForm.invalid">Guardar plato</button>
+
+  <div *ngIf="mensaje" [ngClass]="{ error: mensajeError, success: !mensajeError }">
+    {{ mensaje }}
+  </div>
+</form>

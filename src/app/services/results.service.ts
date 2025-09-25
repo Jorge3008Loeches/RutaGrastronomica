@@ -28,7 +28,7 @@ export class ResultsService {
   deleteRestaurante(id: number) {
     return this.http.delete(`http://localhost:8080/api/restaurantes/${id}`);
   }
-  
+
   setSelectedPlate(res: PlatosRetrieved) {
     this.selectedPlate.set(res);
   }
@@ -36,23 +36,34 @@ export class ResultsService {
   goToRestaurant(rest: RetrievedRestaurant) {
     this.restaurantSubject.next(rest);
   }
-  
+
   // Método para obtener un restaurante por su ID
   getRestauranteById(id: number): Observable<RetrievedRestaurant> {
-    return this.http.get<RetrievedRestaurant>(`${this.backendUrl}/${id}`);
+    return this.http.get<RetrievedRestaurant>(
+      `http://localhost:8080/api/restaurantes/${id}`
+    );
   }
 
   createRestaurante(restaurante: Restaurante): Observable<RetrievedRestaurant> {
-    return this.http.post<RetrievedRestaurant>(this.backendUrl, restaurante);
+    return this.http.post<RetrievedRestaurant>(
+      'http://localhost:8080/api/restaurantes',
+      restaurante
+    );
   }
 
   updateRestaurante(restaurante: Restaurante): Observable<Restaurante> {
     return this.http.put<Restaurante>(
-      `${this.backendUrl}/${restaurante.id}`,
+      `http://localhost:8080/api/restaurantes/${restaurante.id}`,
       restaurante
     );
   }
-  
+
+  get10Restaurantes(): Observable<RetrievedRestaurant[]> {
+    return this.http.get<RetrievedRestaurant[]>(
+      'http://localhost:8080/api/restaurantes/top10'
+    );
+  }
+
   getRestaurantes(query?: string): Observable<RetrievedRestaurant[]> {
     return this.http.get<RetrievedRestaurant[]>(
       `${this.backendUrl}restaurantes${query ? query : ''}`
@@ -62,5 +73,17 @@ export class ResultsService {
     return this.http.get<PlatosRetrieved[]>(
       `${this.backendUrl}platosTipicos${query ? query : ''}`
     );
+  }
+  createPlato(
+    plato: Omit<PlatosRetrieved, 'id_plato'>
+  ): Observable<PlatosRetrieved> {
+    return this.http.post<PlatosRetrieved>(
+      `${this.backendUrl}platosTipicos/`,
+      plato
+    );
+  }
+
+  eliminarPlato(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.backendUrl}platosTipicos/id/${id}`);
   }
 }

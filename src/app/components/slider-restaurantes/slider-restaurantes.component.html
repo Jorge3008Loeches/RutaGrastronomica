@@ -1,0 +1,25 @@
+
+  <p class="propTitle">Los 10 mejores restaurantes para ti!</p>
+
+  <div class="slider-wrapper">
+    <button class="slider-btn-left" (click)="scrollSliderRes('left')">←</button>
+
+    <div class="slider-viewportRes" #sliderViewportRes>
+      <div class="slider" #sliderRes>
+        <div class="slider-itemRes" *ngFor="let restaurante of restaurantes">
+          <!-- <img
+            class="imgRestaurante"
+            [src]="restaurante.img"
+            [alt]="restaurante.nombre" /> -->
+            <img  class="img" [src]="`https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg`" alt="" />
+          <!-- <p class="tipoRestaurante">{{ restaurante.nombre }}</p> -->
+          <p class="nombreRestaurante">{{ restaurante.nombre }}</p>
+          <p class="ubicacionRestaurante">{{ restaurante.domicilio }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-btn-right" (click)="scrollSliderRes('right')">
+      →
+    </button>
+  </div>
