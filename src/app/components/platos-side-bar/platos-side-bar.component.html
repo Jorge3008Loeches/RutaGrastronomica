@@ -10,6 +10,9 @@
           <h3>{{ plato?.nombre }}</h3>
           <!-- <button class="btn-outlined-gris" (click)=" restaurante && go(restaurante)">Mostrar restaurantes</button> -->
           <button class="btn-outlined-gris"  (click)="plato?.nombre && filtrarPorPlato(`/por-plato?nombrePlato=${plato!.nombre}`, plato!)">Mostrar restaurantes</button>
+          <button class="btn-icon-delete" (click)="eliminarPato(plato!.id_plato)">
+            Eliminar
+          </button>
           <span class="description">{{ plato?.descripcion }}</span>
 
         </div>

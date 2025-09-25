@@ -17,7 +17,8 @@ button {
   padding: 15px;
   border-radius: 8px;
   width: 100%;
-  gap: 50px; /* Espacio entre imagen y texto */
+  gap: 50px;
+  /* Espacio entre imagen y texto */
   margin-bottom: 10px;
 }
 
@@ -28,12 +29,14 @@ button {
 .container {
   display: flex;
 }
+
 .contenido {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
 }
+
 .description {
   font-size: 12px;
 }
@@ -41,9 +44,11 @@ button {
 .btn-outlined-gris {
   padding: 0.5rem 1rem;
   font-size: 14px;
-  border: 1px solid #ccc; /* borde gris */
+  border: 1px solid #ccc;
+  /* borde gris */
   background-color: transparent;
-  color: #333; /* texto gris oscuro */
+  color: #333;
+  /* texto gris oscuro */
   border-radius: 30px;
   cursor: pointer;
   transition:
@@ -52,7 +57,8 @@ button {
 }
 
 .btn-outlined-gris:hover {
-  background-color: #f2f2f2; /* gris claro al pasar el mouse */
+  background-color: #f2f2f2;
+  /* gris claro al pasar el mouse */
 }
 
 .image-container {
@@ -78,4 +84,37 @@ button {
   flex-direction: row;
   gap: 25px;
   padding: 15px;
+}
+
+.btn-icon-delete {
+  background-color: #e53935; // Rojo fuerte
+  margin-top: 5px;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+
+  &:hover {
+    background-color: #d32f2f; // Rojo más oscuro
+    transform: scale(1.03);
+  }
+
+  &:active {
+    background-color: #b71c1c;
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ef9a9a;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: #ef9a9a;
+    cursor: not-allowed;
+  }
 }
