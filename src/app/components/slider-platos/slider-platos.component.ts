@@ -22,6 +22,17 @@ export class SliderPlatosComponent {
   currentIndex = 0;
   itemsPerPage = 6;
 
+  getTopPlatos() {
+    this.platosService.get10Platos().subscribe({
+      next: data => {
+        console.log('Platos obtenidos:', data);
+        this.platos = data;
+      },
+      error: error => {
+        console.error('Error al obtener los platos:', error);
+      },
+    });
+  }
   scrollSlider(direction: 'left' | 'right') {
     const container = this.sliderViewportPlatos.nativeElement;
     if (!container) return;
@@ -45,17 +56,6 @@ export class SliderPlatosComponent {
     container.scrollTo({
       left: this.currentIndex * scrollAmount,
       behavior: 'smooth',
-    });
-  }
-
-  getTopPlatos() {
-    this.platosService.get10Platos().subscribe({
-      next: data => {
-        this.platos = data;
-      },
-      error: error => {
-        console.error('Error al obtener los platos:', error);
-      },
     });
   }
 }

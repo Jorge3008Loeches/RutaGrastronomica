@@ -28,7 +28,13 @@ export class LoginComponent {
     console.log('nombreUsuario', this.nombreUsuario);
     console.log('password', this.password);
 
-    this.userService.login(this.nombreUsuario, this.password).subscribe({
+    const loginData = {
+      nombre: this.nombreUsuario, // que venga del formulario
+      password: this.password, // idem
+    };
+
+    const body = { nombre: this.nombreUsuario, password: this.password };
+    this.userService.loginManual(body).subscribe({
       next: (res: string) => {
         console.log('login exitoso', res);
 

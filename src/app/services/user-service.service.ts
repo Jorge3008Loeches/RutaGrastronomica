@@ -56,6 +56,12 @@ export class UserService {
     });
   }
 
+  loginManual(body: { nombre: string; password: string }): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}/login`, body, {
+      responseType: 'text' as 'json',
+    });
+  }
+
   updateUsuario(usuario: Usuario): Observable<Usuario> {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
