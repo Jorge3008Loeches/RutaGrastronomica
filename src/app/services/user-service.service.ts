@@ -1,13 +1,7 @@
+/* eslint-disable @angular-eslint/prefer-inject */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  catchError,
-  map,
-  Observable,
-  of,
-  throwError,
-} from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { Usuario } from '../models/usuario';
 import { LoginDTO } from '../models/login';
 import { AuthService } from './auth-service.service';
@@ -16,7 +10,8 @@ import { AuthService } from './auth-service.service';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api/usuarios';
+  //private apiUrl = 'http://localhost:8082/api/usuarios';
+  apiUrl = 'http://gastromadrid.pickmyskills.com:8082/api/';
 
   //observables de los estados de autenticacion
   private loogedIn = new BehaviorSubject<boolean>(this.hasToken());

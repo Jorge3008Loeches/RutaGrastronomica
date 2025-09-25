@@ -13,7 +13,9 @@ export class ResultsService {
 
   constructor(private http: HttpClient) {}
 
-  backendUrl = 'http://localhost:8080/api/';
+  //backendUrl = 'http://localhost:8082/api/';
+
+  backendUrl = 'http://gastromadrid.pickmyskills.com:8082/api/';
 
   private restaurantSubject = new Subject<RetrievedRestaurant>();
   restaurant$ = this.restaurantSubject.asObservable();
@@ -26,7 +28,7 @@ export class ResultsService {
   }
 
   deleteRestaurante(id: number) {
-    return this.http.delete(`http://localhost:8080/api/restaurantes/${id}`);
+    return this.http.delete(`${this.backendUrl}restaurantes/${id}`);
   }
 
   setSelectedPlate(res: PlatosRetrieved) {
@@ -40,27 +42,27 @@ export class ResultsService {
   // Método para obtener un restaurante por su ID
   getRestauranteById(id: number): Observable<RetrievedRestaurant> {
     return this.http.get<RetrievedRestaurant>(
-      `http://localhost:8080/api/restaurantes/${id}`
+      `${this.backendUrl}restaurantes/${id}`
     );
   }
 
   createRestaurante(restaurante: Restaurante): Observable<RetrievedRestaurant> {
     return this.http.post<RetrievedRestaurant>(
-      'http://localhost:8080/api/restaurantes',
+      `${this.backendUrl}restaurantes`,
       restaurante
     );
   }
 
   updateRestaurante(restaurante: Restaurante): Observable<Restaurante> {
     return this.http.put<Restaurante>(
-      `http://localhost:8080/api/restaurantes/${restaurante.id}`,
+      `${this.backendUrl}restaurantes/${restaurante.id}`,
       restaurante
     );
   }
 
   get10Restaurantes(): Observable<RetrievedRestaurant[]> {
     return this.http.get<RetrievedRestaurant[]>(
-      'http://localhost:8080/api/restaurantes/top10'
+      `${this.backendUrl}restaurantes/top1`
     );
   }
 
