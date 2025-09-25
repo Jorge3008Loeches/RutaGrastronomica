@@ -14,6 +14,7 @@
       <input
         class="searchinput"
         type="text"
+        placeholder="Buscar platillos..."
         #searchBox
         />
       <button mat-icon-button class="searchbutton" (click)="goToSearch(`/nombre/${searchBox.value}`)">
@@ -33,20 +34,20 @@
 
       <!-- mostrar si no esta logueado -->
 
-     
 
-        
+
+
               <button *ngIf=" !loggedIn"  (click)="openLoginDialog()" class="loginbutton">Log In</button>
               <button *ngIf=" !loggedIn"  (click)="openRegisterDialog()" class="signupbutton">
                 Sign Up
               </button>
-      
+
 
       <!-- mostrar si esta logueado -->
 
       <div *ngIf=" loggedIn">
 
-        
+
         <button  (click)="logout()" class="signupbutton">
           Log Out
         </button>
