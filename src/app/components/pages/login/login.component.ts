@@ -33,7 +33,7 @@ export class LoginComponent {
       password: this.password, // idem
     };
 
-    const body = { nombre: this.nombreUsuario, password: this.password };
+    const body = { nombreUsuario: this.nombreUsuario, password: this.password };
     this.userService.loginManual(body).subscribe({
       next: (res: string) => {
         console.log('login exitoso', res);
