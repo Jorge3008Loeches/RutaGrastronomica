@@ -25,6 +25,9 @@
   <map-info-window #infoWindow>
     <h3>{{ selectedMark?.nombre }}</h3>
     <p>{{selectedMark?.domicilio}}</p>
+    <a [href]="'https://www.google.com/maps/@' + selectedMark?.latitude + 'z,'+ selectedMark?.longitude + ',9z'"  target="_blank" rel="noopener noreferrer" class="link-btn">
+      🌐 Ir a Google Maps
+    </a>
   </map-info-window>
 
   <!-- <map-info-window *ngFor="let marker of markers" #infoWindow>
