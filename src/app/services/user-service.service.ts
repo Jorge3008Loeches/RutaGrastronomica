@@ -58,7 +58,10 @@ export class UserService {
     );
   }
 
-  loginManual(body: { nombre: string; password: string }): Observable<string> {
+  loginManual(body: {
+    nombreUsuario: string;
+    password: string;
+  }): Observable<string> {
     return this.http.post<string>(
       'http://gastromadrid.pickmyskills.com:8082/api/usuarios/login',
       body,
