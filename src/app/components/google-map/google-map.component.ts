@@ -1,9 +1,10 @@
 /* eslint-disable @angular-eslint/prefer-inject */
-import { Component, Input, viewChild, OnInit } from '@angular/core';
+import { Component, Input, viewChild, OnInit, ViewChild } from '@angular/core';
 import {
   GoogleMap,
   GoogleMapsModule,
   MapAdvancedMarker,
+  MapInfoWindow,
 } from '@angular/google-maps';
 import { RetrievedRestaurant } from '../../models/restaurante';
 import { ResultsService } from '../../services/results.service';
@@ -20,7 +21,7 @@ export class GoogleMapComponent implements OnInit {
   display!: google.maps.LatLngLiteral;
 
   @Input() restaurantesRetrieved: RetrievedRestaurant[] = [];
-  constructor(private ResultsService: ResultsService) {}
+  constructor(public ResultsService: ResultsService) {}
 
   moveMap(event: google.maps.MapMouseEvent) {
     this.center = event.latLng!.toJSON();
@@ -46,10 +47,17 @@ export class GoogleMapComponent implements OnInit {
   };
 
   private markReference = viewChild.required<GoogleMap>(GoogleMap);
+  selectedMark: RetrievedRestaurant | undefined;
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
 
   changeLocation(mark: RetrievedRestaurant) {
     this.markReference().panTo({ lat: mark.latitude, lng: mark.longitude });
     this.ResultsService.setSelectedRestaurant(mark);
+  }
+
+  openInfoWindow(marker: MapAdvancedMarker, mark: RetrievedRestaurant) {
+    this.selectedMark = mark;
+    this.infoWindow.open(marker); // PASAMOS EL MAPADVANCEDMARKER, NO HTMLElement
   }
 
   ngOnInit() {

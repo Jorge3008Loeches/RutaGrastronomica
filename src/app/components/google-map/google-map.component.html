@@ -17,9 +17,15 @@
         lat: mark.latitude,
         lng: mark.longitude
       }" [options]="advancedMarkerOptions"
-       (mapClick)="changeLocation(mark)"
+       (mapClick)="openInfoWindow(marker, mark)"
+       #marker="mapAdvancedMarker"
        />
     }
+
+  <map-info-window #infoWindow>
+    <h3>{{ selectedMark?.nombre }}</h3>
+    <p>{{selectedMark?.domicilio}}</p>
+  </map-info-window>
 
   <!-- <map-info-window *ngFor="let marker of markers" #infoWindow>
     {{ marker?.info }}
