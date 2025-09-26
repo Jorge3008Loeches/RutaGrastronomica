@@ -31,7 +31,10 @@ export class UserService {
   ) {}
 
   create(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.apiUrl, usuario);
+    return this.http.post<Usuario>(
+      'http://gastromadrid.pickmyskills.com:8082/api/usuarios',
+      usuario
+    );
   }
 
   // login(nombreUsuario: string, password: string): Observable<string> {
@@ -46,15 +49,23 @@ export class UserService {
   // }
   login(nombreUsuario: string, password: string): Observable<string> {
     const body: LoginDTO = { nombreUsuario, password };
-    return this.http.post<string>(`${this.apiUrl}/login`, body, {
-      responseType: 'text' as 'json',
-    });
+    return this.http.post<string>(
+      'http://gastromadrid.pickmyskills.com:8082/api/usuarios/login',
+      body,
+      {
+        responseType: 'text' as 'json',
+      }
+    );
   }
 
   loginManual(body: { nombre: string; password: string }): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/login`, body, {
-      responseType: 'text' as 'json',
-    });
+    return this.http.post<string>(
+      'http://gastromadrid.pickmyskills.com:8082/api/usuarios/login',
+      body,
+      {
+        responseType: 'text' as 'json',
+      }
+    );
   }
 
   updateUsuario(usuario: Usuario): Observable<Usuario> {

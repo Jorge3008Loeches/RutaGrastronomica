@@ -62,7 +62,7 @@ export class ResultsService {
 
   get10Restaurantes(): Observable<RetrievedRestaurant[]> {
     return this.http.get<RetrievedRestaurant[]>(
-      `${this.backendUrl}restaurantes/top1`
+      `${this.backendUrl}restaurantes/top10`
     );
   }
 
